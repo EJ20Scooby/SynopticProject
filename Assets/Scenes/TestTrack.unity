@@ -2210,6 +2210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931907134}
+  - component: {fileID: 931907135}
   m_Layer: 0
   m_Name: --CheckPoints--
   m_TagString: Untagged
@@ -2250,6 +2251,37 @@ Transform:
   - {fileID: 1736341092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931907135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931907133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad92a302c8af5b46b681b7d49de8a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpoints:
+  - {fileID: 364175304}
+  - {fileID: 1423498599}
+  - {fileID: 437115006}
+  - {fileID: 422323728}
+  - {fileID: 1800338367}
+  - {fileID: 1731540440}
+  - {fileID: 1398415113}
+  - {fileID: 1913651225}
+  - {fileID: 1599763883}
+  - {fileID: 952206160}
+  - {fileID: 1354640057}
+  - {fileID: 1630116289}
+  - {fileID: 1536662881}
+  - {fileID: 1680970965}
+  - {fileID: 1885874645}
+  - {fileID: 1813693402}
+  - {fileID: 1492970671}
+  - {fileID: 1736341092}
 --- !u!1 &952206159
 GameObject:
   m_ObjectHideFlags: 0
