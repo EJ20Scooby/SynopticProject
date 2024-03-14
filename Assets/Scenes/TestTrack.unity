@@ -972,10 +972,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1353833189}
     m_Modifications:
+    - target: {fileID: 171133342256673025, guid: 504a3f0a1e6bdfb41bc2d5e5c3d1462c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5115191715533577665, guid: 504a3f0a1e6bdfb41bc2d5e5c3d1462c,
         type: 3}
       propertyPath: m_Name
       value: Subaruu_Impreeza_WRC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115191715533577665, guid: 504a3f0a1e6bdfb41bc2d5e5c3d1462c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7484680505489472917, guid: 504a3f0a1e6bdfb41bc2d5e5c3d1462c,
         type: 3}
@@ -1194,6 +1204,7 @@ GameObject:
   - component: {fileID: 364175307}
   - component: {fileID: 364175306}
   - component: {fileID: 364175305}
+  - component: {fileID: 364175308}
   m_Layer: 0
   m_Name: Start/Finish
   m_TagString: Untagged
@@ -1210,11 +1221,11 @@ Transform:
   m_GameObject: {fileID: 364175303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.016258597, z: -0, w: 0.99986786}
-  m_LocalPosition: {x: -4.6, y: 7.01, z: 5.8}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: -4.5999985, y: 9.26, z: 5.800003}
+  m_LocalScale: {x: 28.319847, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: -1.863, z: 0}
 --- !u!65 &364175305
 BoxCollider:
@@ -1244,7 +1255,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364175303}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1287,6 +1298,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364175303}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &364175308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364175303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &422323727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1322,7 @@ GameObject:
   - component: {fileID: 422323731}
   - component: {fileID: 422323730}
   - component: {fileID: 422323729}
+  - component: {fileID: 422323732}
   m_Layer: 0
   m_Name: CheckPoint (3)
   m_TagString: Untagged
@@ -1315,11 +1339,11 @@ Transform:
   m_GameObject: {fileID: 422323727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7070064, z: -0, w: 0.70720714}
-  m_LocalPosition: {x: 63, y: 7.01, z: 109.19998}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 63, y: 9.26, z: 109.19998}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 89.984, z: 0}
 --- !u!65 &422323729
 BoxCollider:
@@ -1349,7 +1373,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422323727}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1392,6 +1416,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422323727}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &422323732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422323727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437115005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1440,7 @@ GameObject:
   - component: {fileID: 437115009}
   - component: {fileID: 437115008}
   - component: {fileID: 437115007}
+  - component: {fileID: 437115010}
   m_Layer: 0
   m_Name: CheckPoint (2)
   m_TagString: Untagged
@@ -1420,11 +1457,11 @@ Transform:
   m_GameObject: {fileID: 437115005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.44038618, z: -0, w: 0.8978085}
-  m_LocalPosition: {x: 21.4, y: 7.01, z: 91.2}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 21.400002, y: 9.26, z: 91.2}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 52.257, z: 0}
 --- !u!65 &437115007
 BoxCollider:
@@ -1454,7 +1491,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437115005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1497,6 +1534,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437115005}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &437115010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437115005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449176335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2208,55 @@ MonoBehaviour:
   perpDirRotated: {x: -0.99999964, y: 0, z: 0.00092163053}
   markerStartUVY: 0.8514099
   customPoints: []
+--- !u!1 &742660124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 742660125}
+  m_Layer: 0
+  m_Name: Checkpoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &742660125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742660124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 364175304}
+  - {fileID: 1423498599}
+  - {fileID: 437115006}
+  - {fileID: 422323728}
+  - {fileID: 1800338367}
+  - {fileID: 1731540440}
+  - {fileID: 1398415113}
+  - {fileID: 1913651225}
+  - {fileID: 1599763883}
+  - {fileID: 952206160}
+  - {fileID: 1354640057}
+  - {fileID: 1630116289}
+  - {fileID: 1536662881}
+  - {fileID: 1680970965}
+  - {fileID: 1885874645}
+  - {fileID: 1813693402}
+  - {fileID: 1492970671}
+  - {fileID: 1736341092}
+  m_Father: {fileID: 931907134}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760981676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,7 +2453,7 @@ GameObject:
   - component: {fileID: 931907134}
   - component: {fileID: 931907135}
   m_Layer: 0
-  m_Name: --CheckPoints--
+  m_Name: TrackManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2374,24 +2472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 364175304}
-  - {fileID: 1423498599}
-  - {fileID: 437115006}
-  - {fileID: 422323728}
-  - {fileID: 1800338367}
-  - {fileID: 1731540440}
-  - {fileID: 1398415113}
-  - {fileID: 1913651225}
-  - {fileID: 1599763883}
-  - {fileID: 952206160}
-  - {fileID: 1354640057}
-  - {fileID: 1630116289}
-  - {fileID: 1536662881}
-  - {fileID: 1680970965}
-  - {fileID: 1885874645}
-  - {fileID: 1813693402}
-  - {fileID: 1492970671}
-  - {fileID: 1736341092}
+  - {fileID: 742660125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &931907135
@@ -2403,7 +2484,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 931907133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad92a302c8af5b46b681b7d49de8a8c, type: 3}
+  m_Script: {fileID: 11500000, guid: a56c5f2f465340f4cac8d38e377b2aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &952206159
@@ -2418,6 +2499,7 @@ GameObject:
   - component: {fileID: 952206163}
   - component: {fileID: 952206162}
   - component: {fileID: 952206161}
+  - component: {fileID: 952206164}
   m_Layer: 0
   m_Name: CheckPoint (9)
   m_TagString: Untagged
@@ -2434,11 +2516,11 @@ Transform:
   m_GameObject: {fileID: 952206159}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.97469115, z: -0, w: -0.22355585}
-  m_LocalPosition: {x: 228.4, y: 7.01, z: 35}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 228.4, y: 9.26, z: 35}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 205.836, z: 0}
 --- !u!65 &952206161
 BoxCollider:
@@ -2468,7 +2550,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952206159}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2511,6 +2593,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952206159}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &952206164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952206159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070042804
 GameObject:
   m_ObjectHideFlags: 0
@@ -11734,7 +11828,7 @@ GameObject:
   - component: {fileID: 1353833189}
   m_Layer: 0
   m_Name: --Vehicle--
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11767,6 +11861,7 @@ GameObject:
   - component: {fileID: 1354640060}
   - component: {fileID: 1354640059}
   - component: {fileID: 1354640058}
+  - component: {fileID: 1354640061}
   m_Layer: 0
   m_Name: CheckPoint (10)
   m_TagString: Untagged
@@ -11783,11 +11878,11 @@ Transform:
   m_GameObject: {fileID: 1354640056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.90689784, z: -0, w: -0.4213507}
-  m_LocalPosition: {x: 96, y: 7.01, z: -74.2}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 96, y: 9.26, z: -74.2}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 229.84, z: 0}
 --- !u!65 &1354640058
 BoxCollider:
@@ -11817,7 +11912,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354640056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11860,6 +11955,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354640056}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1354640061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354640056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1360181013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12229,6 +12336,7 @@ GameObject:
   - component: {fileID: 1398415116}
   - component: {fileID: 1398415115}
   - component: {fileID: 1398415114}
+  - component: {fileID: 1398415117}
   m_Layer: 0
   m_Name: CheckPoint (6)
   m_TagString: Untagged
@@ -12245,11 +12353,11 @@ Transform:
   m_GameObject: {fileID: 1398415112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7171386, z: -0, w: 0.69693065}
-  m_LocalPosition: {x: 208.4, y: 7.01, z: 147.3}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 208.4, y: 9.26, z: 147.30002}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 91.637, z: 0}
 --- !u!65 &1398415114
 BoxCollider:
@@ -12279,7 +12387,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398415112}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12322,6 +12430,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398415112}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1398415117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398415112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1423498598
 GameObject:
   m_ObjectHideFlags: 0
@@ -12334,6 +12454,7 @@ GameObject:
   - component: {fileID: 1423498602}
   - component: {fileID: 1423498601}
   - component: {fileID: 1423498600}
+  - component: {fileID: 1423498603}
   m_Layer: 0
   m_Name: CheckPoint (1)
   m_TagString: Untagged
@@ -12350,11 +12471,11 @@ Transform:
   m_GameObject: {fileID: 1423498598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.024825118, z: -0, w: 0.9996918}
-  m_LocalPosition: {x: -2.2600021, y: 7.01, z: 48}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: -2.2600021, y: 9.26, z: 48}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 2.845, z: 0}
 --- !u!65 &1423498600
 BoxCollider:
@@ -12384,7 +12505,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423498598}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12427,6 +12548,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423498598}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1423498603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423498598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1463853451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12535,6 +12668,7 @@ GameObject:
   - component: {fileID: 1492970674}
   - component: {fileID: 1492970673}
   - component: {fileID: 1492970672}
+  - component: {fileID: 1492970675}
   m_Layer: 0
   m_Name: CheckPoint (16)
   m_TagString: Untagged
@@ -12551,11 +12685,11 @@ Transform:
   m_GameObject: {fileID: 1492970670}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.42413828, z: -0, w: -0.90559745}
-  m_LocalPosition: {x: 27.5, y: 7.01, z: -144.9}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 27.5, y: 9.26, z: -144.9}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 309.80798, z: 0}
 --- !u!65 &1492970672
 BoxCollider:
@@ -12585,7 +12719,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492970670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12628,6 +12762,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492970670}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1492970675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492970670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1525133943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12832,6 +12978,7 @@ GameObject:
   - component: {fileID: 1536662884}
   - component: {fileID: 1536662883}
   - component: {fileID: 1536662882}
+  - component: {fileID: 1536662885}
   m_Layer: 0
   m_Name: CheckPoint (12)
   m_TagString: Untagged
@@ -12848,11 +12995,11 @@ Transform:
   m_GameObject: {fileID: 1536662880}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.90709686, z: -0, w: 0.42092204}
-  m_LocalPosition: {x: 93.4, y: 7.01, z: -120.7}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 93.4, y: 9.26, z: -120.7}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 130.214, z: 0}
 --- !u!65 &1536662882
 BoxCollider:
@@ -12882,7 +13029,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536662880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12925,6 +13072,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536662880}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1536662885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536662880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1554885002
 GameObject:
   m_ObjectHideFlags: 0
@@ -86815,6 +86974,7 @@ GameObject:
   - component: {fileID: 1599763886}
   - component: {fileID: 1599763885}
   - component: {fileID: 1599763884}
+  - component: {fileID: 1599763887}
   m_Layer: 0
   m_Name: CheckPoint (8)
   m_TagString: Untagged
@@ -86831,11 +86991,11 @@ Transform:
   m_GameObject: {fileID: 1599763882}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9998591, z: -0, w: -0.01678899}
-  m_LocalPosition: {x: 246.3, y: 7.01, z: 118.399994}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 246.3, y: 9.26, z: 118.399994}
+  m_LocalScale: {x: 28.319847, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 181.924, z: 0}
 --- !u!65 &1599763884
 BoxCollider:
@@ -86865,7 +87025,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599763882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -86908,6 +87068,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599763882}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1599763887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599763882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1603716343
 GameObject:
   m_ObjectHideFlags: 0
@@ -86965,6 +87137,7 @@ GameObject:
   - component: {fileID: 1630116292}
   - component: {fileID: 1630116291}
   - component: {fileID: 1630116290}
+  - component: {fileID: 1630116293}
   m_Layer: 0
   m_Name: CheckPoint (11)
   m_TagString: Untagged
@@ -86981,11 +87154,11 @@ Transform:
   m_GameObject: {fileID: 1630116288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9983489, z: -0, w: 0.057441097}
-  m_LocalPosition: {x: 77.9, y: 7.01, z: -101.6}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 77.9, y: 9.26, z: -101.6}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 173.414, z: 0}
 --- !u!65 &1630116290
 BoxCollider:
@@ -87015,7 +87188,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630116288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87058,6 +87231,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630116288}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1630116293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630116288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1657919700
 GameObject:
   m_ObjectHideFlags: 0
@@ -87164,6 +87349,7 @@ GameObject:
   - component: {fileID: 1680970968}
   - component: {fileID: 1680970967}
   - component: {fileID: 1680970966}
+  - component: {fileID: 1680970969}
   m_Layer: 0
   m_Name: CheckPoint (13)
   m_TagString: Untagged
@@ -87180,11 +87366,11 @@ Transform:
   m_GameObject: {fileID: 1680970964}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.8140903, z: -0, w: 0.58073837}
-  m_LocalPosition: {x: 153.4, y: 7.01, z: -133.5}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 153.4, y: 9.26, z: -133.5}
+  m_LocalScale: {x: 28.319847, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 108.995, z: 0}
 --- !u!65 &1680970966
 BoxCollider:
@@ -87214,7 +87400,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680970964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87257,6 +87443,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680970964}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1680970969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680970964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1731540439
 GameObject:
   m_ObjectHideFlags: 0
@@ -87269,6 +87467,7 @@ GameObject:
   - component: {fileID: 1731540443}
   - component: {fileID: 1731540442}
   - component: {fileID: 1731540441}
+  - component: {fileID: 1731540444}
   m_Layer: 0
   m_Name: CheckPoint (5)
   m_TagString: Untagged
@@ -87285,11 +87484,11 @@ Transform:
   m_GameObject: {fileID: 1731540439}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.47257072, z: -0, w: 0.88129276}
-  m_LocalPosition: {x: 172.1, y: 7.01, z: 134.6}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 172.1, y: 9.26, z: 134.6}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 56.403, z: 0}
 --- !u!65 &1731540441
 BoxCollider:
@@ -87319,7 +87518,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731540439}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87362,6 +87561,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731540439}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1731540444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731540439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1736341091
 GameObject:
   m_ObjectHideFlags: 0
@@ -87374,6 +87585,7 @@ GameObject:
   - component: {fileID: 1736341095}
   - component: {fileID: 1736341094}
   - component: {fileID: 1736341093}
+  - component: {fileID: 1736341096}
   m_Layer: 0
   m_Name: CheckPoint (17)
   m_TagString: Untagged
@@ -87390,11 +87602,11 @@ Transform:
   m_GameObject: {fileID: 1736341091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.048392586, z: -0, w: -0.9988284}
-  m_LocalPosition: {x: -1.3, y: 7.01, z: -71.4}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: -1.300003, y: 9.26, z: -71.4}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 354.452, z: 0}
 --- !u!65 &1736341093
 BoxCollider:
@@ -87424,7 +87636,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736341091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87467,6 +87679,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736341091}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1736341096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736341091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742986079
 GameObject:
   m_ObjectHideFlags: 0
@@ -87689,6 +87913,7 @@ GameObject:
   - component: {fileID: 1800338370}
   - component: {fileID: 1800338369}
   - component: {fileID: 1800338368}
+  - component: {fileID: 1800338371}
   m_Layer: 0
   m_Name: CheckPoint (4)
   m_TagString: Untagged
@@ -87705,11 +87930,11 @@ Transform:
   m_GameObject: {fileID: 1800338366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7070064, z: -0, w: 0.70720714}
-  m_LocalPosition: {x: 126, y: 7.01, z: 109.19998}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 126, y: 9.26, z: 109.19998}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 89.984, z: 0}
 --- !u!65 &1800338368
 BoxCollider:
@@ -87739,7 +87964,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800338366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87782,6 +88007,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800338366}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1800338371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800338366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1813693401
 GameObject:
   m_ObjectHideFlags: 0
@@ -87794,6 +88031,7 @@ GameObject:
   - component: {fileID: 1813693405}
   - component: {fileID: 1813693404}
   - component: {fileID: 1813693403}
+  - component: {fileID: 1813693406}
   m_Layer: 0
   m_Name: CheckPoint (15)
   m_TagString: Untagged
@@ -87810,11 +88048,11 @@ Transform:
   m_GameObject: {fileID: 1813693401}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7769976, z: -0, w: -0.62950355}
-  m_LocalPosition: {x: 151, y: 7.01, z: -181.8}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 151, y: 9.26, z: -181.8}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 258.027, z: 0}
 --- !u!65 &1813693403
 BoxCollider:
@@ -87844,7 +88082,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813693401}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -87887,6 +88125,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813693401}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1813693406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813693401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819331762
 GameObject:
   m_ObjectHideFlags: 1
@@ -88327,6 +88577,7 @@ GameObject:
   - component: {fileID: 1885874648}
   - component: {fileID: 1885874647}
   - component: {fileID: 1885874646}
+  - component: {fileID: 1885874649}
   m_Layer: 0
   m_Name: CheckPoint (14)
   m_TagString: Untagged
@@ -88343,11 +88594,11 @@ Transform:
   m_GameObject: {fileID: 1885874644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999782, z: -0, w: -0.006612411}
-  m_LocalPosition: {x: 180, y: 7.01, z: -157}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 180, y: 9.26, z: -157}
+  m_LocalScale: {x: 28.319849, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 180.758, z: 0}
 --- !u!65 &1885874646
 BoxCollider:
@@ -88377,7 +88628,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885874644}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -88420,6 +88671,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885874644}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1885874649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885874644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1899864613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88528,6 +88791,7 @@ GameObject:
   - component: {fileID: 1913651228}
   - component: {fileID: 1913651227}
   - component: {fileID: 1913651226}
+  - component: {fileID: 1913651229}
   m_Layer: 0
   m_Name: CheckPoint (7)
   m_TagString: Untagged
@@ -88544,11 +88808,11 @@ Transform:
   m_GameObject: {fileID: 1913651224}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.940535, z: -0, w: 0.33969694}
-  m_LocalPosition: {x: 240.2, y: 7.01, z: 141}
-  m_LocalScale: {x: 28.319849, y: 3.2336, z: 1}
+  m_LocalPosition: {x: 240.2, y: 9.26, z: 141}
+  m_LocalScale: {x: 28.31985, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 931907134}
+  m_Father: {fileID: 742660125}
   m_LocalEulerAnglesHint: {x: 0, y: 140.283, z: 0}
 --- !u!65 &1913651226
 BoxCollider:
@@ -88578,7 +88842,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913651224}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -88621,6 +88885,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913651224}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1913651229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913651224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5936e857378d77741a06583b596d6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1944567262
 MonoBehaviour:
   m_ObjectHideFlags: 0
