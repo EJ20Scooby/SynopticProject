@@ -9,9 +9,11 @@ public class TrackManager : MonoBehaviour
     private int nextCheckpointIndex;
 
     public float laptime;
+    public float personalBest;
     private bool startTimer = false;
 
     public UnityEngine.UI.Text lapTimer;
+    public UnityEngine.UI.Text bestTime;
 
     private void Update()
     {
@@ -20,6 +22,7 @@ public class TrackManager : MonoBehaviour
             laptime = laptime + Time.deltaTime;
 
             lapTimer.text = "Time: " + laptime.ToString("F2");
+            bestTime.text = "PB: " + personalBest.ToString("F2");
         }
     }
 
@@ -44,6 +47,14 @@ public class TrackManager : MonoBehaviour
         {
             if (checkpointList.IndexOf(checkpoint) == 0)
             {
+                if(personalBest == 0)
+                {
+                    personalBest = laptime;
+                }
+                if (laptime < personalBest)
+                {
+                    personalBest = laptime;
+                }
                 laptime = 0;
                 startTimer = true;
             }
