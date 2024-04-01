@@ -8,6 +8,21 @@ public class TrackManager : MonoBehaviour
     private List<Checkpoint> checkpointList;
     private int nextCheckpointIndex;
 
+    public float laptime;
+    private bool startTimer = false;
+
+    public UnityEngine.UI.Text lapTimer;
+
+    private void Update()
+    {
+        if (startTimer == true)
+        {
+            laptime = laptime + Time.deltaTime;
+
+            lapTimer.text = "Time: " + laptime.ToString("F2");
+        }
+    }
+
     private void Awake()
     {
         Transform TrackManagerTransform = transform.Find("Checkpoints");
@@ -27,6 +42,11 @@ public class TrackManager : MonoBehaviour
     {
         if(checkpointList.IndexOf(checkpoint) == nextCheckpointIndex)
         {
+            if (checkpointList.IndexOf(checkpoint) == 0)
+            {
+                laptime = 0;
+                startTimer = true;
+            }
             Debug.Log("Correct checkpoint");
             nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
         }
