@@ -8,6 +8,7 @@ public class RotateCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Time.timeScale = 1.0f;
         transform.RotateAround(car.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
 }

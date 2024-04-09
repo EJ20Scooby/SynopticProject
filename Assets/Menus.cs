@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject[] setupMenus;
-    int currentSetupMenu = 0;    
+    [SerializeField] GameObject pauseMenu;         
 
     // Update is called once per frame
     void Update()
@@ -19,16 +18,12 @@ public class Menus : MonoBehaviour
             if (!isOpen)
             {
                 OpenPause();
-            }            
-        }  
-        if (Input.GetKeyDown(KeyCode.PageUp))
-        {
-            NextSetup();
-        }
-        if(Input.GetKeyDown(KeyCode.PageDown))
-        {
-            LastSetup();
-        }
+            }
+            else
+            {
+                ClosePause();
+            }
+        }         
     }
 
     public void OpenPause()
@@ -54,38 +49,15 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         Time.timeScale = 1.0f;
+    }    
+
+    public void goToTrack()
+    {
+        SceneManager.LoadScene("TestTrack");
     }
 
-    public void SetUpMenuOpen()
+    public void goToGarage()
     {
-        currentSetupMenu = 0;
-
-        CloseMain();
-        setupMenus[currentSetupMenu].SetActive(true);
-        Time.timeScale = 0.0f;
-    }
-    public void SetUpMenuClose()
-    {
-        setupMenus[currentSetupMenu].SetActive(false);
-        Time.timeScale = 1.0f;
-    }
-
-    public void NextSetup()
-    {
-        if(currentSetupMenu != setupMenus.Length-1) 
-        {
-            setupMenus[currentSetupMenu].SetActive(false);
-            currentSetupMenu++;
-            setupMenus[currentSetupMenu].SetActive(true);
-        }
-    }
-    public void LastSetup()
-    {
-        if (currentSetupMenu > 0)
-        {
-            setupMenus[currentSetupMenu].SetActive(false);
-            currentSetupMenu--;
-            setupMenus[currentSetupMenu].SetActive(true);
-        }
+        SceneManager.LoadScene("Garage");
     }
 }

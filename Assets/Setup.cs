@@ -6,6 +6,10 @@ using UnityEngine.UIElements;
 
 public class Setup : MonoBehaviour
 {
+    int currentSetupMenu = 0;
+    [SerializeField] GameObject setupButton;
+    [SerializeField] GameObject[] setupMenus;
+
     [SerializeField] GameObject player;
     SimCarController carSettings;
 
@@ -47,7 +51,14 @@ public class Setup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.PageUp))
+        {
+            NextSetup();
+        }
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            LastSetup();
+        }
     }
 
     public void increaseTopspeed()
@@ -183,6 +194,38 @@ public class Setup : MonoBehaviour
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
             damper.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        }
+    }
+
+    public void SetUpMenuOpen()
+    {
+        currentSetupMenu = 0;        
+        setupButton.SetActive(false);
+        
+        setupMenus[currentSetupMenu].SetActive(true);
+    }
+    public void SetUpMenuClose()
+    {
+        setupMenus[currentSetupMenu].SetActive(false);        
+        setupButton.SetActive(true);
+    }
+
+    public void NextSetup()
+    {
+        if (currentSetupMenu != setupMenus.Length - 1)
+        {
+            setupMenus[currentSetupMenu].SetActive(false);
+            currentSetupMenu++;
+            setupMenus[currentSetupMenu].SetActive(true);
+        }
+    }
+    public void LastSetup()
+    {
+        if (currentSetupMenu > 0)
+        {
+            setupMenus[currentSetupMenu].SetActive(false);
+            currentSetupMenu--;
+            setupMenus[currentSetupMenu].SetActive(true);
         }
     }
 }
