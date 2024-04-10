@@ -16,14 +16,19 @@ public class Setup : MonoBehaviour
     [SerializeField] UnityEngine.UI.Slider finalDriveSlider;
     [SerializeField] Text topSpeed;
 
-    [SerializeField] UnityEngine.UI.Slider rideHeightSlider;
+    [SerializeField] UnityEngine.UI.Slider rideHeightSliderFront;
+    [SerializeField] UnityEngine.UI.Slider rideHeightSliderRear;
 
-    [SerializeField] UnityEngine.UI.Slider suspensionStiffnessSlider;
-    [SerializeField] Text stiffness;
+    [SerializeField] UnityEngine.UI.Slider suspensionStiffnessSliderFront;
+    [SerializeField] Text stiffnessFront;
+    [SerializeField] UnityEngine.UI.Slider suspensionStiffnessSliderRear;
+    [SerializeField] Text stiffnessRear;
     private float springAdjust = 5000.0f;
 
-    [SerializeField] UnityEngine.UI.Slider damperStiffnessSlider;
-    [SerializeField] Text damper;
+    [SerializeField] UnityEngine.UI.Slider damperStiffnessSliderFront;
+    [SerializeField] Text damperFront;
+    [SerializeField] UnityEngine.UI.Slider damperStiffnessSliderRear;
+    [SerializeField] Text damperRear;
     private float damperAdjust = 500.0f;
     // Start is called before the first frame update
     void Start()
@@ -33,19 +38,30 @@ public class Setup : MonoBehaviour
         finalDriveSlider.minValue = 0.0f;
         topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed + "MPH";
 
-        rideHeightSlider.value = 0.5f;
-        rideHeightSlider.maxValue = 1.0f;
-        rideHeightSlider.minValue = 0.0f;
+        rideHeightSliderFront.value = 0.5f;
+        rideHeightSliderFront.maxValue = 1.0f;
+        rideHeightSliderFront.minValue = 0.0f;
+        rideHeightSliderRear.value = 0.5f;
+        rideHeightSliderRear.maxValue = 1.0f;
+        rideHeightSliderRear.minValue = 0.0f;
 
-        suspensionStiffnessSlider.value = 0.5f;
-        suspensionStiffnessSlider.maxValue = 1.0f;
-        suspensionStiffnessSlider.minValue = 0.0f;
-        stiffness.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        suspensionStiffnessSliderFront.value = 0.5f;
+        suspensionStiffnessSliderFront.maxValue = 1.0f;
+        suspensionStiffnessSliderFront.minValue = 0.0f;
+        stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        suspensionStiffnessSliderRear.value = 0.5f;
+        suspensionStiffnessSliderRear.maxValue = 1.0f;
+        suspensionStiffnessSliderRear.minValue = 0.0f;
+        stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
 
-        damperStiffnessSlider.value = 0.5f;
-        damperStiffnessSlider.maxValue = 1.0f;
-        damperStiffnessSlider.minValue = 0.0f;
-        damper.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        damperStiffnessSliderFront.value = 0.5f;
+        damperStiffnessSliderFront.maxValue = 1.0f;
+        damperStiffnessSliderFront.minValue = 0.0f;
+        damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        damperStiffnessSliderRear.value = 0.5f;
+        damperStiffnessSliderRear.maxValue = 1.0f;
+        damperStiffnessSliderRear.minValue = 0.0f;
+        damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
     }
 
     // Update is called once per frame
@@ -81,119 +97,194 @@ public class Setup : MonoBehaviour
         }
     }
 
-    public void increaseRideHeight()
+    public void increaseRideHeightFront()
     {
-        if (rideHeightSlider.value != rideHeightSlider.maxValue)
+        if (rideHeightSliderFront.value != rideHeightSliderFront.maxValue)
         {
-            rideHeightSlider.value += 0.1f;
+            rideHeightSliderFront.value += 0.1f;
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance += 0.025f;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance += 0.025f;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance += 0.025f;            
+        }
+    }
+
+    public void decreseRideHeightFront()
+    {
+        if (rideHeightSliderFront.value != rideHeightSliderFront.minValue)
+        {
+            rideHeightSliderFront.value -= 0.1f;
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance -= 0.025f;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance -= 0.025f;            
+        }
+    }
+
+    public void increaseSuspensionStiffnessFront() 
+    {
+        if (suspensionStiffnessSliderFront.value != suspensionStiffnessSliderFront.maxValue)
+        {
+            suspensionStiffnessSliderFront.value += 0.1f;
+
+            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            
+            fr.spring += springAdjust;
+            fl.spring += springAdjust;            
+
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+
+            stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        }
+    }
+
+    public void decreaseSuspensionStiffnessFront()
+    {
+        if (suspensionStiffnessSliderFront.value != suspensionStiffnessSliderFront.minValue)
+        {
+            suspensionStiffnessSliderFront.value -= 0.1f;
+
+            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            
+            fr.spring -= springAdjust;
+            fl.spring -= springAdjust;
+            
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            
+            stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        }
+    }
+
+    public void increaseDamperStiffnessFront()
+    {
+        if (damperStiffnessSliderFront.value != damperStiffnessSliderFront.maxValue)
+        {
+            damperStiffnessSliderFront.value += 0.1f;
+
+            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            
+            fr.damper += damperAdjust;
+            fl.damper += damperAdjust;            
+
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            
+            damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        }
+    }
+
+    public void decreaseDamperStiffnessFront()
+    {
+        if (damperStiffnessSliderFront.value != damperStiffnessSliderFront.minValue)
+        {
+            damperStiffnessSliderFront.value -= 0.1f;
+
+            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+            
+            fr.damper -= damperAdjust;
+            fl.damper -= damperAdjust;            
+
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            
+            damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        }
+    }
+
+    public void increaseRideHeightRear()
+    {
+        if (rideHeightSliderRear.value != rideHeightSliderRear.maxValue)
+        {
+            rideHeightSliderRear.value += 0.1f;
+            
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance += 0.025f;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance += 0.025f;
         }
     }
 
-    public void decreseRideHeight()
+    public void decreseRideHeightRear()
     {
-        if (rideHeightSlider.value != rideHeightSlider.minValue)
+        if (rideHeightSliderRear.value != rideHeightSliderRear.minValue)
         {
-            rideHeightSlider.value -= 0.1f;
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance -= 0.025f;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance -= 0.025f;
+            rideHeightSliderRear.value -= 0.1f;
+            
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance -= 0.025f;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance -= 0.025f;
         }
     }
 
-    public void increaseSuspensionStiffness() 
+    public void increaseSuspensionStiffnessRear()
     {
-        if (suspensionStiffnessSlider.value != suspensionStiffnessSlider.maxValue)
+        if (suspensionStiffnessSliderRear.value != suspensionStiffnessSliderRear.maxValue)
         {
-            suspensionStiffnessSlider.value += 0.1f;
-
-            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            fr.spring += springAdjust;
-            fl.spring += springAdjust;
+            suspensionStiffnessSliderRear.value += 0.1f;
+                        
+            var rr = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            var rl = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            
             rr.spring += springAdjust;
             rl.spring += springAdjust;
 
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            stiffness.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+            stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
         }
     }
 
-    public void decreaseSuspensionStiffness()
+    public void decreaseSuspensionStiffnessRear()
     {
-        if (suspensionStiffnessSlider.value != suspensionStiffnessSlider.minValue)
+        if (suspensionStiffnessSliderRear.value != suspensionStiffnessSliderRear.minValue)
         {
-            suspensionStiffnessSlider.value -= 0.1f;
-
-            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            fr.spring -= springAdjust;
-            fl.spring -= springAdjust;
+            suspensionStiffnessSliderRear.value -= 0.1f;
+                        
+            var rr = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            var rl = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            
             rr.spring -= springAdjust;
             rl.spring -= springAdjust;
-
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+                        
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            stiffness.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+            stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
         }
     }
 
-    public void increaseDamperStiffness()
+    public void increaseDamperStiffnessRear()
     {
-        if (damperStiffnessSlider.value != damperStiffnessSlider.maxValue)
+        if (damperStiffnessSliderRear.value != damperStiffnessSliderRear.maxValue)
         {
-            damperStiffnessSlider.value += 0.1f;
-
-            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            fr.damper += damperAdjust;
-            fl.damper += damperAdjust;
+            damperStiffnessSliderRear.value += 0.1f;
+                        
+            var rr = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            var rl = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            
             rr.damper += damperAdjust;
             rl.damper += damperAdjust;
-
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+                        
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            damper.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+            damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
         }
     }
 
-    public void decreaseDamperStiffness()
+    public void decreaseDamperStiffnessRear()
     {
-        if (damperStiffnessSlider.value != damperStiffnessSlider.minValue)
+        if (damperStiffnessSliderRear.value != damperStiffnessSliderRear.minValue)
         {
-            damperStiffnessSlider.value -= 0.1f;
-
-            var fr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rr = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            var rl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
-            fr.damper -= damperAdjust;
-            fl.damper -= damperAdjust;
+            damperStiffnessSliderRear.value -= 0.1f;
+                        
+            var rr = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            var rl = player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring;
+            
             rr.damper -= damperAdjust;
             rl.damper -= damperAdjust;
-
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            damper.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+            damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
         }
     }
 
