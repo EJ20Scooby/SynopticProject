@@ -20,10 +20,14 @@ public class SimCarController : MonoBehaviour
     private float throttleInput;
     private float brakeInput;
     private float steerInput;
-    private bool handBrakeInput;    
+    private bool handBrakeInput;
+
+    public float brakeFront;
+    public float brakeRear;
 
     public float motorPower;
     public float brakePower;
+    public int brakeBiasLevel = 5;
     public float handBrakePower;
     public AnimationCurve steeringCurve;       
     public float slipAngle;
@@ -37,7 +41,8 @@ public class SimCarController : MonoBehaviour
 
     private void Start()
     {
-        carRB = GetComponent<Rigidbody>();        
+        carRB = GetComponent<Rigidbody>();
+        SetBrakeBias();
     }
 
     void Update()
@@ -50,7 +55,7 @@ public class SimCarController : MonoBehaviour
         ApplySteering();
         ApplyBrake();
         ApplyHandBrake();
-        UpdateWheels();
+        UpdateWheels();        
     }
 
     void CheckInput() 
@@ -105,14 +110,73 @@ public class SimCarController : MonoBehaviour
         isEngineRunning = 2;
     }
 
+    public void SetBrakeBias()
+    {
+        if(brakeBiasLevel == 0)
+        {
+            brakeFront = 0.0f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 1)
+        {
+            brakeFront = 0.1f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 2)
+        {
+            brakeFront = 0.2f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 3)
+        {
+            brakeFront = 0.3f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 4)
+        {
+            brakeFront = 0.4f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 5)
+        {
+            brakeFront = 0.5f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 6)
+        {
+            brakeFront = 0.6f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 7)
+        {
+            brakeFront = 0.7f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 8)
+        {
+            brakeFront = 0.8f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 9)
+        {
+            brakeFront = 0.9f;
+            brakeRear = 1.0f - brakeFront;
+        }
+        if (brakeBiasLevel == 10)
+        {
+            brakeFront = 1.0f;
+            brakeRear = 1.0f - brakeFront;
+        }
+    }
+
     void ApplyBrake()
     {
         //Braking is front biased 70% - 30% division
-        colliders.FRWheel.brakeTorque = brakeInput * brakePower * 0.7f;
-        colliders.FLWheel.brakeTorque = brakeInput * brakePower * 0.7f;
+        colliders.FRWheel.brakeTorque = brakeInput * brakePower * brakeFront;
+        colliders.FLWheel.brakeTorque = brakeInput * brakePower * brakeFront;
 
-        colliders.RRWheel.brakeTorque = brakeInput * brakePower * 0.3f;
-        colliders.RLWheel.brakeTorque = brakeInput * brakePower * 0.3f;
+        colliders.RRWheel.brakeTorque = brakeInput * brakePower * brakeRear;
+        colliders.RLWheel.brakeTorque = brakeInput * brakePower * brakeRear;
     }
 
     void ApplyHandBrake()

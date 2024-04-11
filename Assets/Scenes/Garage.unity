@@ -7593,7 +7593,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356523004}
         m_TargetAssemblyTypeName: Setup, Assembly-CSharp
-        m_MethodName: decreseTopspeed
+        m_MethodName: decreaseBrakeBias
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10076,6 +10076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
         type: 3}
+      propertyPath: brakeBiasLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
+        type: 3}
       propertyPath: handBrakePower
       value: 0
       objectReference: {fileID: 0}
@@ -10592,6 +10597,8 @@ MonoBehaviour:
   player: {fileID: 1658867111}
   brakePressureSlider: {fileID: 21699702}
   pressure: {fileID: 570249310}
+  brakeBiasSlider: {fileID: 284106968}
+  bias: {fileID: 1995222436}
   finalDriveSlider: {fileID: 1645213394}
   topSpeed: {fileID: 34710367}
   rideHeightSliderFront: {fileID: 396004660}
@@ -13187,7 +13194,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1356523004}
         m_TargetAssemblyTypeName: Setup, Assembly-CSharp
-        m_MethodName: increaseTopspeed
+        m_MethodName: increaseBrakeBias
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15936,7 +15943,7 @@ GameObject:
   - component: {fileID: 1995222437}
   - component: {fileID: 1995222436}
   m_Layer: 0
-  m_Name: 'Pressure:'
+  m_Name: Bias
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

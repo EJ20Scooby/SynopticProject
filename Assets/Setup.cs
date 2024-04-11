@@ -17,6 +17,9 @@ public class Setup : MonoBehaviour
     [SerializeField] Text pressure;
     private float brakePressureAdjust = 100;
 
+    [SerializeField] UnityEngine.UI.Slider brakeBiasSlider;
+    [SerializeField] Text bias;    
+
     [SerializeField] UnityEngine.UI.Slider finalDriveSlider;
     [SerializeField] Text topSpeed;
 
@@ -41,6 +44,11 @@ public class Setup : MonoBehaviour
         brakePressureSlider.maxValue = 1.0f;
         brakePressureSlider.minValue = 0.0f;
         pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+
+        brakeBiasSlider.value = 0.5f;
+        brakeBiasSlider.maxValue = 1.0f;
+        brakeBiasSlider.minValue = 0.0f;
+        bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
 
         finalDriveSlider.value = 0.5f;
         finalDriveSlider.maxValue = 1.0f;
@@ -105,6 +113,28 @@ public class Setup : MonoBehaviour
             pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
         }
     }
+
+    public void increaseBrakeBias()
+    {
+        if (brakeBiasSlider.value != brakeBiasSlider.maxValue)
+        {
+            player.GetComponent<SimCarController>().brakeBiasLevel += 1;
+            brakeBiasSlider.value += 0.1f;
+            player.GetComponent<SimCarController>().SetBrakeBias();
+            bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+        }
+    }
+
+    public void decreaseBrakeBias()
+    {
+        if(brakeBiasSlider.value != brakeBiasSlider.minValue)
+        {
+            player.GetComponent<SimCarController>().brakeBiasLevel -= 1;
+            brakeBiasSlider.value -= 0.1f;
+            player.GetComponent<SimCarController>().SetBrakeBias();
+            bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+       }
+    }    
 
     public void increaseTopspeed()
     {
