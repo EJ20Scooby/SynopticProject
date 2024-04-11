@@ -13,6 +13,10 @@ public class Setup : MonoBehaviour
     [SerializeField] GameObject player;
     SimCarController carSettings;
 
+    [SerializeField] UnityEngine.UI.Slider brakePressureSlider;
+    [SerializeField] Text pressure;
+    private float brakePressureAdjust = 100;
+
     [SerializeField] UnityEngine.UI.Slider finalDriveSlider;
     [SerializeField] Text topSpeed;
 
@@ -33,6 +37,11 @@ public class Setup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        brakePressureSlider.value = 0.5f;
+        brakePressureSlider.maxValue = 1.0f;
+        brakePressureSlider.minValue = 0.0f;
+        pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+
         finalDriveSlider.value = 0.5f;
         finalDriveSlider.maxValue = 1.0f;
         finalDriveSlider.minValue = 0.0f;
@@ -74,6 +83,26 @@ public class Setup : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.PageDown))
         {
             LastSetup();
+        }
+    }
+
+    public void increaseBrakePressure()
+    {
+        if(brakePressureSlider.value != brakePressureSlider.maxValue) 
+        {
+            player.GetComponent<SimCarController>().brakePower += brakePressureAdjust;
+            brakePressureSlider.value += 0.1f;
+            pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+        }
+    }
+
+    public void decreaseBrakePressure()
+    {
+        if (brakePressureSlider.value != brakePressureSlider.minValue)
+        {
+            player.GetComponent<SimCarController>().brakePower -= 100;
+            brakePressureSlider.value -= 0.1f;
+            pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
         }
     }
 
