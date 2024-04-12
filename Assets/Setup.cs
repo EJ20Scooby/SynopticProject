@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -8,6 +9,7 @@ public class Setup : MonoBehaviour
 {
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
+    [SerializeField] GameObject driveButton;
     [SerializeField] GameObject[] setupMenus;    
 
     [SerializeField] GameObject player;
@@ -92,6 +94,11 @@ public class Setup : MonoBehaviour
         {
             LastSetup();
         }
+    }
+
+    public void goToTrack()
+    {
+        SceneManager.LoadScene("TestTrack");
     }    
 
     public void increaseBrakePressure()
@@ -351,6 +358,7 @@ public class Setup : MonoBehaviour
     {
         currentSetupMenu = 0;        
         setupButton.SetActive(false);
+        driveButton.SetActive(false);
         
         setupMenus[currentSetupMenu].SetActive(true);
     }
@@ -358,6 +366,7 @@ public class Setup : MonoBehaviour
     {
         setupMenus[currentSetupMenu].SetActive(false);        
         setupButton.SetActive(true);
+        driveButton.SetActive(true);
     }
 
     public void NextSetup()

@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject pauseMenu;         
+    [SerializeField] GameObject pauseMenu;    
 
     // Update is called once per frame
     void Update()
@@ -49,11 +50,6 @@ public class Menus : MonoBehaviour
     {
         mainMenu.SetActive(false);
         Time.timeScale = 1.0f;
-    }    
-
-    public void goToTrack()
-    {
-        SceneManager.LoadScene("TestTrack");
     }
 
     public void goToGarage()
