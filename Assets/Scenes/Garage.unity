@@ -8829,7 +8829,7 @@ PrefabInstance:
     - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
         type: 3}
       propertyPath: brakePower
-      value: 700
+      value: 1400
       objectReference: {fileID: 0}
     - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
         type: 3}

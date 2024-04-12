@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class Setup : MonoBehaviour
 {
-    private float mphConversion = 2.23694f;
+    private float mphConversion = 2.237f;
 
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
@@ -50,7 +50,7 @@ public class Setup : MonoBehaviour
         pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
 
         brakeBiasSlider.value = 0.5f;
-        brakeBiasSlider.maxValue = 1.0f;
+        brakeBiasSlider.maxValue = 1.1f;
         brakeBiasSlider.minValue = 0.0f;
         bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
 
@@ -117,7 +117,7 @@ public class Setup : MonoBehaviour
     {
         if (brakePressureSlider.value != brakePressureSlider.minValue)
         {
-            player.GetComponent<SimCarController>().brakePower -= 100;
+            player.GetComponent<SimCarController>().brakePower -= brakePressureAdjust;
             brakePressureSlider.value -= 0.1f;
             pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
         }

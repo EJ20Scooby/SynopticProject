@@ -35,7 +35,7 @@ public class SimCarController : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public float steerSpeed;
-    private float mphConversion = 2.23694f;
+    private float mphConversion = 2.237f;
 
     public int isEngineRunning;
     public bool EngineRunning = false;
