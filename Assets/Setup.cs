@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class Setup : MonoBehaviour
 {
+    private float mphConversion = 2.23694f;
+
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
     [SerializeField] GameObject driveButton;
@@ -17,7 +19,7 @@ public class Setup : MonoBehaviour
 
     [SerializeField] UnityEngine.UI.Slider brakePressureSlider;
     [SerializeField] Text pressure;
-    private float brakePressureAdjust = 100;
+    private float brakePressureAdjust = 50;
 
     [SerializeField] UnityEngine.UI.Slider brakeBiasSlider;
     [SerializeField] Text bias;    
@@ -55,7 +57,7 @@ public class Setup : MonoBehaviour
         finalDriveSlider.value = 0.5f;
         finalDriveSlider.maxValue = 1.0f;
         finalDriveSlider.minValue = 0.0f;
-        topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed + "MPH";
+        topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
 
         rideHeightSliderFront.value = 0.5f;
         rideHeightSliderFront.maxValue = 1.0f;
@@ -149,7 +151,7 @@ public class Setup : MonoBehaviour
         {
             player.GetComponent<SimCarController>().maxSpeed += 5;
             finalDriveSlider.value += 0.1f;
-            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed + "MPH";
+            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
         }
     }
 
@@ -159,7 +161,7 @@ public class Setup : MonoBehaviour
         {
             player.GetComponent<SimCarController>().maxSpeed -= 5;
             finalDriveSlider.value -= 0.1f;
-            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed + "MPH";
+            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
         }
     }
 

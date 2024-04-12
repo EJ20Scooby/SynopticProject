@@ -35,6 +35,7 @@ public class SimCarController : MonoBehaviour
     public float speed;
     public float maxSpeed;
     public float steerSpeed;
+    private float mphConversion = 2.23694f;
 
     public int isEngineRunning;
     public bool EngineRunning = false;
@@ -42,12 +43,14 @@ public class SimCarController : MonoBehaviour
     private void Start()
     {
         carRB = GetComponent<Rigidbody>();
+        maxSpeed = maxSpeed * mphConversion;
         SetBrakeBias();
     }
 
     void Update()
     {
-        speed = ((colliders.RRWheel.rotationSpeed + colliders.RLWheel.rotationSpeed + colliders.FRWheel.rotationSpeed + colliders.FLWheel.rotationSpeed) / 4) * colliders.RRWheel.radius * Mathf.PI / 30;
+        //speed = ((colliders.RRWheel.rotationSpeed + colliders.RLWheel.rotationSpeed + colliders.FRWheel.rotationSpeed + colliders.FLWheel.rotationSpeed) / 4) * colliders.RRWheel.radius * Mathf.PI / 30;
+        speed = carRB.velocity.magnitude * mphConversion;//Convert to MPH        
         speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
         steerSpeed = carRB.velocity.magnitude; 
         CheckInput();
