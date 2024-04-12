@@ -8,7 +8,7 @@ public class Setup : MonoBehaviour
 {
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
-    [SerializeField] GameObject[] setupMenus;
+    [SerializeField] GameObject[] setupMenus;    
 
     [SerializeField] GameObject player;
     SimCarController carSettings;
@@ -92,7 +92,7 @@ public class Setup : MonoBehaviour
         {
             LastSetup();
         }
-    }
+    }    
 
     public void increaseBrakePressure()
     {
