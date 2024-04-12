@@ -14,6 +14,7 @@ public class TrackManager : MonoBehaviour
 
     public UnityEngine.UI.Text lapTimer;
     public UnityEngine.UI.Text bestTime;
+    public UnityEngine.UI.Text speed;
 
     private void Update()
     {
@@ -24,6 +25,7 @@ public class TrackManager : MonoBehaviour
             lapTimer.text = "Time: " + laptime.ToString("F2");
             bestTime.text = "PB: " + personalBest.ToString("F2");
         }
+        speed.text = FindObjectOfType<SimCarController>().speed.ToString("F0");
     }
 
     private void Awake()
