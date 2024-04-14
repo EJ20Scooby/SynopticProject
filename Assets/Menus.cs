@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
-{
-    [SerializeField] GameObject mainMenu;
+{    
     [SerializeField] GameObject pauseMenu;    
 
     // Update is called once per frame
@@ -39,19 +38,10 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void OpenMain()
+    public void goToMain()
     {
-        ClosePause();
-        mainMenu.SetActive(true);
-        Time.timeScale = 0.0f;
+        SceneManager.LoadScene("MainMenu");        
     }
-
-    public void CloseMain()
-    {
-        mainMenu.SetActive(false);
-        Time.timeScale = 1.0f;
-    }
-
     public void goToGarage()
     {
         SceneManager.LoadScene("Garage");

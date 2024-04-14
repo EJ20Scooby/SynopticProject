@@ -12,6 +12,7 @@ public class Setup : MonoBehaviour
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
     [SerializeField] GameObject driveButton;
+    [SerializeField] GameObject menuButton;
     [SerializeField] GameObject[] setupMenus;    
 
     [SerializeField] GameObject player;
@@ -101,7 +102,12 @@ public class Setup : MonoBehaviour
     public void goToTrack()
     {
         SceneManager.LoadScene("TestTrack");
-    }    
+    }
+
+    public void goToMain()
+    {
+        SceneManager.LoadScene("MainMenu");        
+    }
 
     public void increaseBrakePressure()
     {
@@ -361,6 +367,7 @@ public class Setup : MonoBehaviour
         currentSetupMenu = 0;        
         setupButton.SetActive(false);
         driveButton.SetActive(false);
+        menuButton.SetActive(false);
         
         setupMenus[currentSetupMenu].SetActive(true);
     }
@@ -369,6 +376,7 @@ public class Setup : MonoBehaviour
         setupMenus[currentSetupMenu].SetActive(false);        
         setupButton.SetActive(true);
         driveButton.SetActive(true);
+        menuButton.SetActive(true);
     }
 
     public void NextSetup()
