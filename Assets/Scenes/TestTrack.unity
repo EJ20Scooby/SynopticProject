@@ -109666,6 +109666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
         type: 3}
+      propertyPath: brakeBiasLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105891448066706837, guid: 5040edb56e54334409f5549fa775b10a,
+        type: 3}
       propertyPath: handBrakePower
       value: 2800
       objectReference: {fileID: 0}

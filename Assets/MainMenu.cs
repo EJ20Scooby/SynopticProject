@@ -7,11 +7,15 @@ public class MainMenu : MonoBehaviour
 {
     //[SerializeField] GameObject mainMenu;   
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
-    }
+        PlayerPrefs.SetFloat("BrakePower", 1400f);
+        PlayerPrefs.SetInt("BrakeBias", 5);
+        PlayerPrefs.SetFloat("TopSpeed", 69.2912f);
+        PlayerPrefs.SetFloat("RideHeight", 0.4f);
+        PlayerPrefs.SetFloat("Spring", 35000f);
+        PlayerPrefs.SetFloat("Damper", 4500f);
+    }   
 
     public void goToTrack()
     {

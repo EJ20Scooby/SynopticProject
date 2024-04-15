@@ -86,6 +86,16 @@ public class Setup : MonoBehaviour
         damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
     }
 
+    void DefaultValues()
+    {
+        PlayerPrefs.SetFloat("BrakePower", 1400f);
+        PlayerPrefs.SetInt("BrakeBias", 5);
+        PlayerPrefs.SetFloat("TopSpeed", 69.2912f);
+        PlayerPrefs.SetFloat("RideHeight", 0.4f);
+        PlayerPrefs.SetFloat("Spring", 35000f);
+        PlayerPrefs.SetFloat("Damper", 4500f);
+    }
+
     // Update is called once per frame
     void Update()
     {
