@@ -77,7 +77,7 @@ public class SimCarController : MonoBehaviour
         colliders.FLWheel.suspensionSpring = RR;
 
         carRB = GetComponent<Rigidbody>();
-        maxSpeed = maxSpeed * mphConversion;
+        //maxSpeed = maxSpeed * mphConversion;
         SetBrakeBias();
     }
 

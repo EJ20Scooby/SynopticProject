@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     //[SerializeField] GameObject mainMenu;   
-
+    private float mphConversion = 2.237f;
     private void Start()
     {
         PlayerPrefs.SetFloat("BrakePower", 1400f);
         PlayerPrefs.SetInt("BrakeBias", 5);
-        PlayerPrefs.SetFloat("TopSpeed", 69.2912f);
+        PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
         PlayerPrefs.SetFloat("RideHeight", 0.4f);
         PlayerPrefs.SetFloat("Spring", 35000f);
         PlayerPrefs.SetFloat("Damper", 4500f);

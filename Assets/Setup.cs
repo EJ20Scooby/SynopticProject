@@ -45,10 +45,11 @@ public class Setup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DefaultValues();
         brakePressureSlider.value = 0.5f;
         brakePressureSlider.maxValue = 1.0f;
         brakePressureSlider.minValue = 0.0f;
-        pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+        pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
 
         brakeBiasSlider.value = 0.5f;
         brakeBiasSlider.maxValue = 1.1f;
@@ -58,7 +59,7 @@ public class Setup : MonoBehaviour
         finalDriveSlider.value = 0.5f;
         finalDriveSlider.maxValue = 1.0f;
         finalDriveSlider.minValue = 0.0f;
-        topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
+        topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
 
         rideHeightSliderFront.value = 0.5f;
         rideHeightSliderFront.maxValue = 1.0f;
@@ -90,7 +91,7 @@ public class Setup : MonoBehaviour
     {
         PlayerPrefs.SetFloat("BrakePower", 1400f);
         PlayerPrefs.SetInt("BrakeBias", 5);
-        PlayerPrefs.SetFloat("TopSpeed", 69.2912f);
+        PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
         PlayerPrefs.SetFloat("RideHeight", 0.4f);
         PlayerPrefs.SetFloat("Spring", 35000f);
         PlayerPrefs.SetFloat("Damper", 4500f);
@@ -167,7 +168,7 @@ public class Setup : MonoBehaviour
         {
             player.GetComponent<SimCarController>().maxSpeed += 5;
             finalDriveSlider.value += 0.1f;
-            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
+            topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
         }
     }
 
