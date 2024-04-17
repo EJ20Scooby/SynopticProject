@@ -14,6 +14,10 @@ public class Setup : MonoBehaviour
     public float maxSpeed;
     public float rideHeightF;
     public float rideHeightR;
+    public float suspensionF;
+    public float suspensionR;
+    public float damperF;
+    public float damperR;
 
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
@@ -97,6 +101,10 @@ public class Setup : MonoBehaviour
         maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
         rideHeightF = PlayerPrefs.GetFloat("RideHeightFront");
         rideHeightR = PlayerPrefs.GetFloat("RideHeightRear");
+        suspensionF = PlayerPrefs.GetFloat("SuspensionFront");
+        suspensionR = PlayerPrefs.GetFloat("SuspensionRear");
+        damperF = PlayerPrefs.GetFloat("DamperFront");
+        damperR = PlayerPrefs.GetFloat("DamperRear");
     }
 
     void DefaultValues()
@@ -111,9 +119,11 @@ public class Setup : MonoBehaviour
         player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance = 0.4f;
         player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance = 0.4f;
         player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance = 0.4f;
-        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;        
-        PlayerPrefs.SetFloat("Spring", 35000f);
-        PlayerPrefs.SetFloat("Damper", 4500f);
+        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;
+        PlayerPrefs.SetFloat("SpringFront", 35000f);
+        PlayerPrefs.SetFloat("SpringRear", 35000f);
+        PlayerPrefs.SetFloat("DamperFront", 4500f);
+        PlayerPrefs.SetFloat("DamperRear", 4500f);
     }
 
     // Update is called once per frame

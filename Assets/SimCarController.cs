@@ -56,15 +56,15 @@ public class SimCarController : MonoBehaviour
         var RL = colliders.FLWheel.suspensionSpring;
         var RR = colliders.FLWheel.suspensionSpring;
 
-        FL.spring = PlayerPrefs.GetFloat("Spring");
-        FR.spring = PlayerPrefs.GetFloat("Spring");
-        RL.spring = PlayerPrefs.GetFloat("Spring");
-        RR.spring = PlayerPrefs.GetFloat("Spring");              
+        FL.spring = PlayerPrefs.GetFloat("SpringFront");
+        FR.spring = PlayerPrefs.GetFloat("SpringFront");
+        RL.spring = PlayerPrefs.GetFloat("SpringRear");
+        RR.spring = PlayerPrefs.GetFloat("SpringRear");              
 
-        FL.damper = PlayerPrefs.GetFloat("Damper");
-        FR.damper = PlayerPrefs.GetFloat("Damper");
-        RL.damper = PlayerPrefs.GetFloat("Damper");
-        RR.damper = PlayerPrefs.GetFloat("Damper");
+        FL.damper = PlayerPrefs.GetFloat("DamperFront");
+        FR.damper = PlayerPrefs.GetFloat("DamperFront");
+        RL.damper = PlayerPrefs.GetFloat("DamperRear");
+        RR.damper = PlayerPrefs.GetFloat("DamperRear");
 
         colliders.FLWheel.suspensionSpring = FL;
         colliders.FLWheel.suspensionSpring = FR;

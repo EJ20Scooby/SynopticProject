@@ -14,8 +14,10 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
         PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
         PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
-        PlayerPrefs.SetFloat("Spring", 35000f);
-        PlayerPrefs.SetFloat("Damper", 4500f);
+        PlayerPrefs.SetFloat("SpringFront", 35000f);
+        PlayerPrefs.SetFloat("SpringRear", 35000f);
+        PlayerPrefs.SetFloat("DamperFront", 4500f);
+        PlayerPrefs.SetFloat("DamperRear", 4500f);
     }   
 
     public void goToTrack()
