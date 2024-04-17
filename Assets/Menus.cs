@@ -40,7 +40,8 @@ public class Menus : MonoBehaviour
 
     public void goToMain()
     {
-        SceneManager.LoadScene("MainMenu");        
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1.0f;
     }
     public void goToGarage()
     {

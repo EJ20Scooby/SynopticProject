@@ -8,6 +8,12 @@ using UnityEngine.UIElements;
 public class Setup : MonoBehaviour
 {
     private float mphConversion = 2.237f;
+        
+    public float brakePower;
+    public int brakeBiasLevel;    
+    public float maxSpeed;
+    public float rideHeightF;
+    public float rideHeightR;
 
     int currentSetupMenu = 0;
     [SerializeField] GameObject setupButton;
@@ -52,7 +58,7 @@ public class Setup : MonoBehaviour
         pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
 
         brakeBiasSlider.value = 0.5f;
-        brakeBiasSlider.maxValue = 1.1f;
+        brakeBiasSlider.maxValue = 1.0f;
         brakeBiasSlider.minValue = 0.0f;
         bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
 
@@ -85,14 +91,27 @@ public class Setup : MonoBehaviour
         damperStiffnessSliderRear.maxValue = 1.0f;
         damperStiffnessSliderRear.minValue = 0.0f;
         damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
+
+        brakePower = PlayerPrefs.GetFloat("BrakePower");
+        brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
+        maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
+        rideHeightF = PlayerPrefs.GetFloat("RideHeightFront");
+        rideHeightR = PlayerPrefs.GetFloat("RideHeightRear");
     }
 
     void DefaultValues()
     {
         PlayerPrefs.SetFloat("BrakePower", 1400f);
         PlayerPrefs.SetInt("BrakeBias", 5);
+        brakeBiasLevel = 5;
+        player.GetComponent<SimCarController>().brakeBiasLevel = 5;
         PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
-        PlayerPrefs.SetFloat("RideHeight", 0.4f);
+        PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
+        PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
+        player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;        
         PlayerPrefs.SetFloat("Spring", 35000f);
         PlayerPrefs.SetFloat("Damper", 4500f);
     }
@@ -124,9 +143,10 @@ public class Setup : MonoBehaviour
     {
         if(brakePressureSlider.value != brakePressureSlider.maxValue) 
         {
-            player.GetComponent<SimCarController>().brakePower += brakePressureAdjust;
+            brakePower = brakePower + brakePressureAdjust;
+            PlayerPrefs.SetFloat("BrakePower", brakePower);
             brakePressureSlider.value += 0.1f;
-            pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+            pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
         }
     }
 
@@ -134,9 +154,10 @@ public class Setup : MonoBehaviour
     {
         if (brakePressureSlider.value != brakePressureSlider.minValue)
         {
-            player.GetComponent<SimCarController>().brakePower -= brakePressureAdjust;
+            brakePower = brakePower - brakePressureAdjust;
+            PlayerPrefs.SetFloat("BrakePower", brakePower);
             brakePressureSlider.value -= 0.1f;
-            pressure.text = "Pressure: " + player.GetComponent<SimCarController>().brakePower;
+            pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
         }
     }
 
@@ -144,7 +165,9 @@ public class Setup : MonoBehaviour
     {
         if (brakeBiasSlider.value != brakeBiasSlider.maxValue)
         {
+            brakeBiasLevel = brakeBiasLevel + 1;
             player.GetComponent<SimCarController>().brakeBiasLevel += 1;
+            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
             brakeBiasSlider.value += 0.1f;
             player.GetComponent<SimCarController>().SetBrakeBias();
             bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
@@ -155,7 +178,9 @@ public class Setup : MonoBehaviour
     {
         if(brakeBiasSlider.value != brakeBiasSlider.minValue)
         {
+            brakeBiasLevel = brakeBiasLevel - 1;
             player.GetComponent<SimCarController>().brakeBiasLevel -= 1;
+            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
             brakeBiasSlider.value -= 0.1f;
             player.GetComponent<SimCarController>().SetBrakeBias();
             bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
@@ -166,7 +191,8 @@ public class Setup : MonoBehaviour
     {
         if (finalDriveSlider.value != finalDriveSlider.maxValue)
         {
-            player.GetComponent<SimCarController>().maxSpeed += 5;
+            maxSpeed = maxSpeed + 5;
+            PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
             finalDriveSlider.value += 0.1f;
             topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
         }
@@ -176,9 +202,10 @@ public class Setup : MonoBehaviour
     {
         if (finalDriveSlider.value != finalDriveSlider.minValue)
         {
-            player.GetComponent<SimCarController>().maxSpeed -= 5;
+            maxSpeed = maxSpeed - 5;
+            PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
             finalDriveSlider.value -= 0.1f;
-            topSpeed.text = "Top Speed: " + player.GetComponent<SimCarController>().maxSpeed.ToString("F0") + "MPH";
+            topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
         }
     }
 
@@ -187,8 +214,12 @@ public class Setup : MonoBehaviour
         if (rideHeightSliderFront.value != rideHeightSliderFront.maxValue)
         {
             rideHeightSliderFront.value += 0.1f;
+
+            rideHeightF += 0.025f;
+            PlayerPrefs.SetFloat("RideHeightFront", rideHeightF);
+
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance += 0.025f;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance += 0.025f;            
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance += 0.025f;             
         }
     }
 
@@ -197,6 +228,10 @@ public class Setup : MonoBehaviour
         if (rideHeightSliderFront.value != rideHeightSliderFront.minValue)
         {
             rideHeightSliderFront.value -= 0.1f;
+
+            rideHeightF -= 0.025f;
+            PlayerPrefs.SetFloat("RideHeightFront", rideHeightF);
+
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance -= 0.025f;
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance -= 0.025f;            
         }
@@ -283,7 +318,10 @@ public class Setup : MonoBehaviour
         if (rideHeightSliderRear.value != rideHeightSliderRear.maxValue)
         {
             rideHeightSliderRear.value += 0.1f;
-            
+
+            rideHeightR += 0.025f;
+            PlayerPrefs.SetFloat("RideHeightRear", rideHeightR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance += 0.025f;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance += 0.025f;
         }
@@ -294,7 +332,10 @@ public class Setup : MonoBehaviour
         if (rideHeightSliderRear.value != rideHeightSliderRear.minValue)
         {
             rideHeightSliderRear.value -= 0.1f;
-            
+
+            rideHeightR -= 0.025f;
+            PlayerPrefs.SetFloat("RideHeightRear", rideHeightR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance -= 0.025f;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance -= 0.025f;
         }

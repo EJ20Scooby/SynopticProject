@@ -46,10 +46,10 @@ public class SimCarController : MonoBehaviour
         brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
         maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
 
-        colliders.FLWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeight");
-        colliders.FRWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeight");
-        colliders.RLWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeight");
-        colliders.RRWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeight");
+        colliders.FLWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeightFront");
+        colliders.FRWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeightFront");
+        colliders.RLWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeightRear");
+        colliders.RRWheel.suspensionDistance = PlayerPrefs.GetFloat("RideHeightRear");
 
         var FL = colliders.FLWheel.suspensionSpring;
         var FR = colliders.FLWheel.suspensionSpring;
@@ -59,12 +59,7 @@ public class SimCarController : MonoBehaviour
         FL.spring = PlayerPrefs.GetFloat("Spring");
         FR.spring = PlayerPrefs.GetFloat("Spring");
         RL.spring = PlayerPrefs.GetFloat("Spring");
-        RR.spring = PlayerPrefs.GetFloat("Spring");
-
-        //colliders.FLWheel.suspensionSpring = FL;
-        //colliders.FLWheel.suspensionSpring = FR;
-        //colliders.FLWheel.suspensionSpring = RL;
-        //colliders.FLWheel.suspensionSpring = RR;        
+        RR.spring = PlayerPrefs.GetFloat("Spring");              
 
         FL.damper = PlayerPrefs.GetFloat("Damper");
         FR.damper = PlayerPrefs.GetFloat("Damper");
