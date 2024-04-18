@@ -25,7 +25,7 @@ public class TrackManager : MonoBehaviour
             lapTimer.text = "Time: " + laptime.ToString("F2");
             bestTime.text = "PB: " + personalBest.ToString("F2");
         }
-        speed.text = FindObjectOfType<SimCarController>().speed.ToString("F0");
+        speed.text = FindObjectOfType<SimCarController>().speed.ToString("F0") + "MPH";
     }
 
     private void Awake()

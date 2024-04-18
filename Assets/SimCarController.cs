@@ -67,9 +67,9 @@ public class SimCarController : MonoBehaviour
         RR.damper = PlayerPrefs.GetFloat("DamperRear");
 
         colliders.FLWheel.suspensionSpring = FL;
-        colliders.FLWheel.suspensionSpring = FR;
-        colliders.FLWheel.suspensionSpring = RL;
-        colliders.FLWheel.suspensionSpring = RR;
+        colliders.FRWheel.suspensionSpring = FR;
+        colliders.RLWheel.suspensionSpring = RL;
+        colliders.RRWheel.suspensionSpring = RR;
 
         carRB = GetComponent<Rigidbody>();
         //maxSpeed = maxSpeed * mphConversion;

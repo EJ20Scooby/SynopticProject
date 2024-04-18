@@ -101,8 +101,8 @@ public class Setup : MonoBehaviour
         maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
         rideHeightF = PlayerPrefs.GetFloat("RideHeightFront");
         rideHeightR = PlayerPrefs.GetFloat("RideHeightRear");
-        suspensionF = PlayerPrefs.GetFloat("SuspensionFront");
-        suspensionR = PlayerPrefs.GetFloat("SuspensionRear");
+        suspensionF = PlayerPrefs.GetFloat("SpringFront");
+        suspensionR = PlayerPrefs.GetFloat("SpringRear");
         damperF = PlayerPrefs.GetFloat("DamperFront");
         damperR = PlayerPrefs.GetFloat("DamperRear");
     }
@@ -116,14 +116,23 @@ public class Setup : MonoBehaviour
         PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
         PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
         PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
-        player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance = 0.4f;
-        player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance = 0.4f;
-        player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance = 0.4f;
-        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;
         PlayerPrefs.SetFloat("SpringFront", 35000f);
         PlayerPrefs.SetFloat("SpringRear", 35000f);
         PlayerPrefs.SetFloat("DamperFront", 4500f);
         PlayerPrefs.SetFloat("DamperRear", 4500f);
+        player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance = 0.4f;
+        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;
+        
+        var Default = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
+        Default.spring = 35000f;
+        Default.damper = 4500f;
+
+        player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = Default;
+        player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = Default;
+        player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = Default;
+        player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = Default;
     }
 
     // Update is called once per frame
@@ -257,7 +266,10 @@ public class Setup : MonoBehaviour
             var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
             
             fr.spring += springAdjust;
-            fl.spring += springAdjust;            
+            fl.spring += springAdjust;
+
+            suspensionF = suspensionF + springAdjust;
+            PlayerPrefs.SetFloat("SpringFront", suspensionF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
@@ -277,7 +289,10 @@ public class Setup : MonoBehaviour
             
             fr.spring -= springAdjust;
             fl.spring -= springAdjust;
-            
+
+            suspensionF = suspensionF - springAdjust;
+            PlayerPrefs.SetFloat("SpringFront", suspensionF);
+
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
             
@@ -295,7 +310,10 @@ public class Setup : MonoBehaviour
             var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
             
             fr.damper += damperAdjust;
-            fl.damper += damperAdjust;            
+            fl.damper += damperAdjust;
+
+            damperF = damperF + damperAdjust;
+            PlayerPrefs.SetFloat("DamperFront", damperF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
@@ -314,7 +332,10 @@ public class Setup : MonoBehaviour
             var fl = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
             
             fr.damper -= damperAdjust;
-            fl.damper -= damperAdjust;            
+            fl.damper -= damperAdjust;
+
+            damperF = damperF - damperAdjust;
+            PlayerPrefs.SetFloat("DamperFront", damperF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
@@ -363,7 +384,9 @@ public class Setup : MonoBehaviour
             rr.spring += springAdjust;
             rl.spring += springAdjust;
 
-            
+            suspensionR = suspensionR + springAdjust;
+            PlayerPrefs.SetFloat("SpringRear", suspensionR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
             stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
@@ -381,7 +404,10 @@ public class Setup : MonoBehaviour
             
             rr.spring -= springAdjust;
             rl.spring -= springAdjust;
-                        
+
+            suspensionR = suspensionR - springAdjust;
+            PlayerPrefs.SetFloat("SpringRear", suspensionR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
             stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
@@ -399,7 +425,10 @@ public class Setup : MonoBehaviour
             
             rr.damper += damperAdjust;
             rl.damper += damperAdjust;
-                        
+
+            damperR = damperR + damperAdjust;
+            PlayerPrefs.SetFloat("DamperRear", damperR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
             damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
@@ -417,7 +446,10 @@ public class Setup : MonoBehaviour
             
             rr.damper -= damperAdjust;
             rl.damper -= damperAdjust;
-            
+
+            damperR = damperR - damperAdjust;
+            PlayerPrefs.SetFloat("DamperRear", damperR);
+
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
             player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
             damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
