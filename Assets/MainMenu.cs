@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    //[SerializeField] GameObject mainMenu;   
+    [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject optionMenu;   
     private float mphConversion = 2.237f;
     private void Start()
     {
@@ -17,13 +18,28 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("SpringFront", 35000f);
         PlayerPrefs.SetFloat("SpringRear", 35000f);
         PlayerPrefs.SetFloat("DamperFront", 4500f);
-        PlayerPrefs.SetFloat("DamperRear", 4500f);
+        PlayerPrefs.SetFloat("DamperRear", 4500f);        
+
+        mainMenu.SetActive(true);
+        optionMenu.SetActive(false);
     }   
 
     public void goToTrack()
     {
         SceneManager.LoadScene("TestTrack");
     }
+
+    public void openMain()
+    {
+        optionMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void openOptions()
+    {
+        mainMenu.SetActive(false);
+        optionMenu.SetActive(true);
+    }   
 
     public void goToGarage()
     {

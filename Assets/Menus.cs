@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {    
-    [SerializeField] GameObject pauseMenu;    
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject optionsMenu;
 
     // Update is called once per frame
     void Update()
@@ -36,6 +37,18 @@ public class Menus : MonoBehaviour
     {
         pauseMenu.SetActive(false); 
         Time.timeScale = 1.0f;
+    }
+
+    public void OpenOptions()
+    {
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
     public void goToMain()

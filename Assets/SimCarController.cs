@@ -39,6 +39,7 @@ public class SimCarController : MonoBehaviour
 
     public int isEngineRunning;
     public bool EngineRunning = false;
+    public bool stabilityControl = true;
 
     private void Start()
     {
@@ -223,13 +224,25 @@ public class SimCarController : MonoBehaviour
     void ApplySteering()
     {
         float steeringAngle = steerInput * steeringCurve.Evaluate(steerSpeed);
-        if (slipAngle < 120f)
+        if (slipAngle < 120f && stabilityControl == true)
         {
             steeringAngle += Vector3.SignedAngle(transform.forward, carRB.velocity + transform.forward, Vector3.up);
         }
         steeringAngle = Mathf.Clamp(steeringAngle, -90f, 90f);
         colliders.FRWheel.steerAngle = steeringAngle;
         colliders.FLWheel.steerAngle = steeringAngle;
+    }
+
+    public void setStabilityControl()
+    {
+        if (stabilityControl != true)
+        {
+            stabilityControl = true;
+        }
+        else
+        {
+            stabilityControl = false;
+        }
     }
 
     void UpdateWheels()
