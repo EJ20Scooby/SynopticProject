@@ -8,6 +8,7 @@ public class Menus : MonoBehaviour
 {    
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject optionsMenu;
+    bool optionOpen = false;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,7 @@ public class Menus : MonoBehaviour
         {
             bool isOpen = pauseMenu.activeSelf;
 
-            if (!isOpen)
+            if (!isOpen && optionOpen == false)
             {
                 OpenPause();
             }
@@ -41,6 +42,7 @@ public class Menus : MonoBehaviour
 
     public void OpenOptions()
     {
+        optionOpen = true;
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
