@@ -4799,7 +4799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d567554d7d4c44c418d00506c32bc990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionName: Final Drive-           Reduces overall speed of car    +Increased acceleration
+  optionName: Final Drive-           Reduces overall speed of car           +Increased
+    acceleration
 --- !u!1 &558608848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15887,7 +15888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d567554d7d4c44c418d00506c32bc990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionName: Final Drive+        Increases overall speed of car -Reduced acceleration
+  optionName: Final Drive+        Increases overall speed of car         -Reduced
+    acceleration
 --- !u!1 &1995222434
 GameObject:
   m_ObjectHideFlags: 0
