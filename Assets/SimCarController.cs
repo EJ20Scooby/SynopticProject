@@ -109,6 +109,10 @@ public class SimCarController : MonoBehaviour
                 brakeInput = Mathf.Abs(throttleInput);
                 throttleInput = 0.0f;
             }            
+            else
+            {
+                brakeInput = 0.0f;
+            }
         }
         else
         {
