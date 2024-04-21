@@ -49,6 +49,7 @@ public class Menus : MonoBehaviour
 
     public void CloseOptions()
     {
+        optionOpen = false;
         optionsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
