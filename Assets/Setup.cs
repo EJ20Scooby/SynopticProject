@@ -113,7 +113,7 @@ public class Setup : MonoBehaviour
         PlayerPrefs.SetInt("BrakeBias", 5);
         brakeBiasLevel = 5;
         player.GetComponent<SimCarController>().brakeBiasLevel = 5;
-        PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
+        PlayerPrefs.SetFloat("TopSpeed", 35.7632f * mphConversion);
         PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
         PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
         PlayerPrefs.SetFloat("SpringFront", 35000f);

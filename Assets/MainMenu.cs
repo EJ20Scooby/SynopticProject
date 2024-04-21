@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("BrakePower", 1400f);
         PlayerPrefs.SetInt("BrakeBias", 5);
-        PlayerPrefs.SetFloat("TopSpeed", 69.2912f * mphConversion);
+        PlayerPrefs.SetFloat("TopSpeed", 35.7632f * mphConversion);
         PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
         PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
         PlayerPrefs.SetFloat("SpringFront", 35000f);
