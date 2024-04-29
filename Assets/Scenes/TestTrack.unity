@@ -6879,10 +6879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c426c1014ecb74a9192723f6be42ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSmoothness: 10
+  moveSmoothness: 15
   rotSmoothness: 50
-  moveOffset: {x: 0, y: 0.01, z: -0.05}
-  rotOffset: {x: 0, y: 0.2, z: 0}
+  moveOffset: {x: 0, y: 0.015, z: -0.04}
+  rotOffset: {x: 0, y: -0.1, z: 0}
   carTarget: {fileID: 3083690287244994398}
 --- !u!1 &1078987516
 GameObject:
