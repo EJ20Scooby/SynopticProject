@@ -64,6 +64,7 @@ public class Setup : MonoBehaviour
         brakeBiasSlider.value = 0.5f;
         brakeBiasSlider.maxValue = 1.0f;
         brakeBiasSlider.minValue = 0.0f;
+        player.GetComponent<SimCarController>().SetBrakeBias();
         bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
 
         finalDriveSlider.value = 0.5f;
