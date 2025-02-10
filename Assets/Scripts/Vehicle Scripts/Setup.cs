@@ -23,6 +23,7 @@ public class Setup : MonoBehaviour
     [SerializeField] GameObject setupButton;
     [SerializeField] GameObject driveButton;
     [SerializeField] GameObject menuButton;
+    [SerializeField] GameObject defaultButton;
     [SerializeField] GameObject[] setupMenus;    
 
     [SerializeField] GameObject player;
@@ -463,6 +464,7 @@ public class Setup : MonoBehaviour
         setupButton.SetActive(false);
         driveButton.SetActive(false);
         menuButton.SetActive(false);
+        defaultButton.SetActive(false);
         
         setupMenus[currentSetupMenu].SetActive(true);
     }
@@ -472,6 +474,7 @@ public class Setup : MonoBehaviour
         setupButton.SetActive(true);
         driveButton.SetActive(true);
         menuButton.SetActive(true);
+        defaultButton.SetActive(true);
     }
 
     public void NextSetup()
