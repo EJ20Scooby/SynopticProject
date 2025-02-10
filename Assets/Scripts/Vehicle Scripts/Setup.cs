@@ -108,7 +108,7 @@ public class Setup : MonoBehaviour
         damperR = PlayerPrefs.GetFloat("DamperRear");
     }
 
-    void DefaultValues()
+    public void DefaultValues()
     {
         PlayerPrefs.SetFloat("BrakePower", 1400f);
         PlayerPrefs.SetInt("BrakeBias", 5);
