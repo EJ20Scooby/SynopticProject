@@ -55,23 +55,19 @@ public class Setup : MonoBehaviour
     private float damperAdjust = 500.0f;
     // Start is called before the first frame update
     void Start()
-    {
-        DefaultValues();
+    {        
         brakePressureSlider.value = 0.5f;
         brakePressureSlider.maxValue = 1.0f;
-        brakePressureSlider.minValue = 0.0f;
-        pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
+        brakePressureSlider.minValue = 0.0f;        
 
         brakeBiasSlider.value = 0.5f;
         brakeBiasSlider.maxValue = 1.0f;
         brakeBiasSlider.minValue = 0.0f;
-        player.GetComponent<SimCarController>().SetBrakeBias();
-        bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+        player.GetComponent<SimCarController>().SetBrakeBias();        
 
         finalDriveSlider.value = 0.5f;
         finalDriveSlider.maxValue = 1.0f;
-        finalDriveSlider.minValue = 0.0f;
-        topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
+        finalDriveSlider.minValue = 0.0f;        
 
         rideHeightSliderFront.value = 0.5f;
         rideHeightSliderFront.maxValue = 1.0f;
@@ -82,21 +78,19 @@ public class Setup : MonoBehaviour
 
         suspensionStiffnessSliderFront.value = 0.5f;
         suspensionStiffnessSliderFront.maxValue = 1.0f;
-        suspensionStiffnessSliderFront.minValue = 0.0f;
-        stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        suspensionStiffnessSliderFront.minValue = 0.0f;        
+
         suspensionStiffnessSliderRear.value = 0.5f;
         suspensionStiffnessSliderRear.maxValue = 1.0f;
-        suspensionStiffnessSliderRear.minValue = 0.0f;
-        stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
+        suspensionStiffnessSliderRear.minValue = 0.0f;        
 
         damperStiffnessSliderFront.value = 0.5f;
         damperStiffnessSliderFront.maxValue = 1.0f;
-        damperStiffnessSliderFront.minValue = 0.0f;
-        damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        damperStiffnessSliderFront.minValue = 0.0f;        
+
         damperStiffnessSliderRear.value = 0.5f;
         damperStiffnessSliderRear.maxValue = 1.0f;
-        damperStiffnessSliderRear.minValue = 0.0f;
-        damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
+        damperStiffnessSliderRear.minValue = 0.0f;        
 
         brakePower = PlayerPrefs.GetFloat("BrakePower");
         brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
@@ -126,7 +120,21 @@ public class Setup : MonoBehaviour
         player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance = 0.4f;
         player.GetComponent<SimCarController>().colliders.RRWheel.suspensionDistance = 0.4f;
         player.GetComponent<SimCarController>().colliders.RLWheel.suspensionDistance = 0.4f;
-        
+
+        brakePower = PlayerPrefs.GetFloat("BrakePower");
+        brakeBiasLevel = PlayerPrefs.GetInt("brakeBias");
+        player.GetComponent<SimCarController>().SetBrakeBias();
+        maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
+
+        rideHeightF = PlayerPrefs.GetFloat("RideHeightFront");
+        rideHeightR = PlayerPrefs.GetFloat("RideHeightRear");
+
+        suspensionF = PlayerPrefs.GetFloat("SpringFront");
+        suspensionR = PlayerPrefs.GetFloat("SpringRear");
+
+        damperF = PlayerPrefs.GetFloat("DamperFront");
+        damperR = PlayerPrefs.GetFloat("DamperRear");
+
         var Default = player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring;
         Default.spring = 35000f;
         Default.damper = 4500f;
@@ -148,6 +156,17 @@ public class Setup : MonoBehaviour
         {
             LastSetup();
         }
+
+        pressure.text = "Pressure: " + brakePower;
+        player.GetComponent<SimCarController>().SetBrakeBias();
+        bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+        topSpeed.text = "Top Speed: " + maxSpeed.ToString("F0") + "MPH";
+
+        stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+        stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
+
+        damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+        damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
     }
 
     public void goToTrack()
@@ -166,8 +185,7 @@ public class Setup : MonoBehaviour
         {
             brakePower = brakePower + brakePressureAdjust;
             PlayerPrefs.SetFloat("BrakePower", brakePower);
-            brakePressureSlider.value += 0.1f;
-            pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
+            brakePressureSlider.value += 0.1f;            
         }
     }
 
@@ -177,8 +195,7 @@ public class Setup : MonoBehaviour
         {
             brakePower = brakePower - brakePressureAdjust;
             PlayerPrefs.SetFloat("BrakePower", brakePower);
-            brakePressureSlider.value -= 0.1f;
-            pressure.text = "Pressure: " + PlayerPrefs.GetFloat("BrakePower");
+            brakePressureSlider.value -= 0.1f;            
         }
     }
 
@@ -190,8 +207,7 @@ public class Setup : MonoBehaviour
             player.GetComponent<SimCarController>().brakeBiasLevel += 1;
             PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
             brakeBiasSlider.value += 0.1f;
-            player.GetComponent<SimCarController>().SetBrakeBias();
-            bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+            player.GetComponent<SimCarController>().SetBrakeBias();            
         }
     }
 
@@ -203,8 +219,7 @@ public class Setup : MonoBehaviour
             player.GetComponent<SimCarController>().brakeBiasLevel -= 1;
             PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
             brakeBiasSlider.value -= 0.1f;
-            player.GetComponent<SimCarController>().SetBrakeBias();
-            bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+            player.GetComponent<SimCarController>().SetBrakeBias();            
        }
     }    
 
@@ -214,8 +229,7 @@ public class Setup : MonoBehaviour
         {
             maxSpeed = maxSpeed + 5;
             PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
-            finalDriveSlider.value += 0.1f;
-            topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
+            finalDriveSlider.value += 0.1f;            
         }
     }
 
@@ -225,8 +239,7 @@ public class Setup : MonoBehaviour
         {
             maxSpeed = maxSpeed - 5;
             PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
-            finalDriveSlider.value -= 0.1f;
-            topSpeed.text = "Top Speed: " + PlayerPrefs.GetFloat("TopSpeed").ToString("F0") + "MPH";
+            finalDriveSlider.value -= 0.1f;            
         }
     }
 
@@ -274,9 +287,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("SpringFront", suspensionF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
-
-            stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;            
         }
     }
 
@@ -296,9 +307,8 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("SpringFront", suspensionF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;           
             
-            stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
         }
     }
 
@@ -318,9 +328,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("DamperFront", damperF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
-            
-            damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;            
         }
     }
 
@@ -340,9 +348,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("DamperFront", damperF);
 
             player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring = fr;
-            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;
-            
-            damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
+            player.GetComponent<SimCarController>().colliders.FLWheel.suspensionSpring = fl;            
         }
     }
 
@@ -390,8 +396,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("SpringRear", suspensionR);
 
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
-            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
+            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;            
         }
     }
 
@@ -411,8 +416,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("SpringRear", suspensionR);
 
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
-            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            stiffnessRear.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.spring + "N/m";
+            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;            
         }
     }
 
@@ -432,8 +436,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("DamperRear", damperR);
 
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
-            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
+            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;            
         }
     }
 
@@ -453,8 +456,7 @@ public class Setup : MonoBehaviour
             PlayerPrefs.SetFloat("DamperRear", damperR);
 
             player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring = rr;
-            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;
-            damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
+            player.GetComponent<SimCarController>().colliders.RLWheel.suspensionSpring = rl;            
         }
     }
 
