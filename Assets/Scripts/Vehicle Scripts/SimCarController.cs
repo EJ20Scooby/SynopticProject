@@ -27,7 +27,7 @@ public class SimCarController : MonoBehaviour
 
     public float motorPower;
     public float brakePower;
-    public int brakeBiasLevel = 4;
+    public int brakeBiasLevel;
     public float handBrakePower;
     public AnimationCurve steeringCurve;       
     public float slipAngle;

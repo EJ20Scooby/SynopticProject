@@ -56,39 +56,40 @@ public class Setup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
-        brakePressureSlider.value = 0.5f;
+        brakePressureSlider.value = PlayerPrefs.GetFloat("BrakePressureSliderPos");
         brakePressureSlider.maxValue = 1.0f;
         brakePressureSlider.minValue = 0.0f;        
 
-        brakeBiasSlider.value = 0.5f;
+        brakeBiasSlider.value = PlayerPrefs.GetFloat("BrakeBiasSliderPos");
         brakeBiasSlider.maxValue = 1.0f;
         brakeBiasSlider.minValue = 0.0f;
-        player.GetComponent<SimCarController>().SetBrakeBias();        
+        //brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
+        //player.GetComponent<SimCarController>().SetBrakeBias();        
 
-        finalDriveSlider.value = 0.5f;
+        finalDriveSlider.value = PlayerPrefs.GetFloat("FinalDriveSliderPos");
         finalDriveSlider.maxValue = 1.0f;
         finalDriveSlider.minValue = 0.0f;        
 
-        rideHeightSliderFront.value = 0.5f;
+        rideHeightSliderFront.value = PlayerPrefs.GetFloat("RideHeightFrontSliderPos");
         rideHeightSliderFront.maxValue = 1.0f;
         rideHeightSliderFront.minValue = 0.0f;
-        rideHeightSliderRear.value = 0.5f;
+        rideHeightSliderRear.value = PlayerPrefs.GetFloat("RideHeightRearSliderPos"); ;
         rideHeightSliderRear.maxValue = 1.0f;
         rideHeightSliderRear.minValue = 0.0f;
 
-        suspensionStiffnessSliderFront.value = 0.5f;
+        suspensionStiffnessSliderFront.value = PlayerPrefs.GetFloat("SpringFrontSliderPos");
         suspensionStiffnessSliderFront.maxValue = 1.0f;
         suspensionStiffnessSliderFront.minValue = 0.0f;        
 
-        suspensionStiffnessSliderRear.value = 0.5f;
+        suspensionStiffnessSliderRear.value = PlayerPrefs.GetFloat("SpringRearSliderPos");
         suspensionStiffnessSliderRear.maxValue = 1.0f;
-        suspensionStiffnessSliderRear.minValue = 0.0f;        
+        suspensionStiffnessSliderRear.minValue = 0.0f;
 
-        damperStiffnessSliderFront.value = 0.5f;
+        damperStiffnessSliderFront.value = PlayerPrefs.GetFloat("DamperFrontSliderPos");
         damperStiffnessSliderFront.maxValue = 1.0f;
         damperStiffnessSliderFront.minValue = 0.0f;        
 
-        damperStiffnessSliderRear.value = 0.5f;
+        damperStiffnessSliderRear.value = PlayerPrefs.GetFloat("DamperRearSliderPos");
         damperStiffnessSliderRear.maxValue = 1.0f;
         damperStiffnessSliderRear.minValue = 0.0f;        
 
@@ -105,10 +106,31 @@ public class Setup : MonoBehaviour
 
     public void DefaultValues()
     {
+        PlayerPrefs.SetFloat("DefaultSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("BrakePressureSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("BrakeBiasSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("FinalDriveSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("RideHeightFrontSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("RideHeightRearSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("SpringFrontSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("SpringRearSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("DamperFrontSliderPos", 0.5f);
+        PlayerPrefs.SetFloat("DamperRearSliderPos", 0.5f);
+
+        brakePressureSlider.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        brakeBiasSlider.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        finalDriveSlider.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        rideHeightSliderFront.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        rideHeightSliderRear.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        suspensionStiffnessSliderFront.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        suspensionStiffnessSliderRear.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        damperStiffnessSliderFront.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+        damperStiffnessSliderRear.value = PlayerPrefs.GetFloat("DefaultSliderPos");
+
         PlayerPrefs.SetFloat("BrakePower", 1400f);
-        PlayerPrefs.SetInt("BrakeBias", 5);
-        brakeBiasLevel = 5;
-        player.GetComponent<SimCarController>().brakeBiasLevel = 5;
+        PlayerPrefs.SetInt("BrakeBias", 5);        
+        player.GetComponent<SimCarController>().brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
+        
         PlayerPrefs.SetFloat("TopSpeed", 35.7632f * mphConversion);
         PlayerPrefs.SetFloat("RideHeightFront", 0.4f);
         PlayerPrefs.SetFloat("RideHeightRear", 0.4f);
@@ -160,6 +182,9 @@ public class Setup : MonoBehaviour
         pressure.text = "Pressure: " + brakePower;
         player.GetComponent<SimCarController>().SetBrakeBias();
         bias.text = "F " + player.GetComponent<SimCarController>().brakeFront * 100 + "/R " + player.GetComponent<SimCarController>().brakeRear * 100;
+        brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
+        player.GetComponent<SimCarController>().SetBrakeBias();
+
         topSpeed.text = "Top Speed: " + maxSpeed.ToString("F0") + "MPH";
 
         stiffnessFront.text = "Stiffness: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.spring + "N/m";
@@ -167,6 +192,17 @@ public class Setup : MonoBehaviour
 
         damperFront.text = "Damper: " + player.GetComponent<SimCarController>().colliders.FRWheel.suspensionSpring.damper + "N-s/m2";
         damperRear.text = "Damper: " + player.GetComponent<SimCarController>().colliders.RRWheel.suspensionSpring.damper + "N-s/m2";
+
+        PlayerPrefs.SetFloat("BrakePressureSliderPos", brakePressureSlider.value);
+        PlayerPrefs.SetFloat("BrakeBiasSliderPos", brakeBiasSlider.value);
+        PlayerPrefs.SetFloat("FinalDriveSliderPos", finalDriveSlider.value);
+        PlayerPrefs.SetFloat("RideHeightFrontSliderPos", rideHeightSliderFront.value);
+        PlayerPrefs.SetFloat("RideHeightRearSliderPos", rideHeightSliderRear.value);
+        PlayerPrefs.SetFloat("SpringFrontSliderPos", suspensionStiffnessSliderFront.value);
+        PlayerPrefs.SetFloat("SpringRearSliderPos", suspensionStiffnessSliderRear.value);
+        PlayerPrefs.SetFloat("DamperFrontSliderPos", damperStiffnessSliderFront.value);
+        PlayerPrefs.SetFloat("DamperRearSliderPos", damperStiffnessSliderRear.value);
+
     }
 
     public void goToTrack()
@@ -185,7 +221,7 @@ public class Setup : MonoBehaviour
         {
             brakePower = brakePower + brakePressureAdjust;
             PlayerPrefs.SetFloat("BrakePower", brakePower);
-            brakePressureSlider.value += 0.1f;            
+            brakePressureSlider.value += 0.1f;              
         }
     }
 
