@@ -10,20 +10,24 @@ public class TrackManager : MonoBehaviour
 
     public float laptime;
     public float personalBest;
+    public float lapDelta;
+    public float lastLap;
     private bool startTimer = false;
 
     public UnityEngine.UI.Text lapTimer;
     public UnityEngine.UI.Text bestTime;
+    public UnityEngine.UI.Text lapDeltaTime;
     public UnityEngine.UI.Text speed;
 
     private void Update()
     {
         if (startTimer == true)
         {
-            laptime = laptime + Time.deltaTime;
+            laptime = laptime + Time.deltaTime;            
 
             lapTimer.text = "Time: " + laptime.ToString("F2");
             bestTime.text = "PB: " + personalBest.ToString("F2");
+            lapDeltaTime.text = "Delta: " + lapDelta.ToString("F2");
         }
         speed.text = FindObjectOfType<SimCarController>().speed.ToString("F0") + "MPH";
     }
@@ -49,14 +53,16 @@ public class TrackManager : MonoBehaviour
         {
             if (checkpointList.IndexOf(checkpoint) == 0)
             {
-                if(personalBest == 0)
+                lastLap = laptime;
+                lapDelta = personalBest - lastLap;
+                if (personalBest == 0)
                 {
                     personalBest = laptime;
                 }
                 if (laptime < personalBest)
                 {
                     personalBest = laptime;
-                }
+                }                
                 laptime = 0;
                 startTimer = true;
             }
