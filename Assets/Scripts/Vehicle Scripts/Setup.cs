@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class Setup : MonoBehaviour
 {
-    private float mphConversion = 2.237f;
+    private float mphConversion = 2.237f;//Value to convert velocity from Unity units to mph
         
     public float brakePower;
     public int brakeBiasLevel;    
@@ -55,16 +55,15 @@ public class Setup : MonoBehaviour
     private float damperAdjust = 500.0f;
     // Start is called before the first frame update
     void Start()
-    {        
+    {   
+        //Initialize all player vehcile values and positions for slider bars in setup menu
         brakePressureSlider.value = PlayerPrefs.GetFloat("BrakePressureSliderPos");
         brakePressureSlider.maxValue = 1.0f;
         brakePressureSlider.minValue = 0.0f;        
 
         brakeBiasSlider.value = PlayerPrefs.GetFloat("BrakeBiasSliderPos");
         brakeBiasSlider.maxValue = 1.0f;
-        brakeBiasSlider.minValue = 0.0f;
-        //brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
-        //player.GetComponent<SimCarController>().SetBrakeBias();        
+        brakeBiasSlider.minValue = 0.0f;               
 
         finalDriveSlider.value = PlayerPrefs.GetFloat("FinalDriveSliderPos");
         finalDriveSlider.maxValue = 1.0f;
@@ -106,6 +105,7 @@ public class Setup : MonoBehaviour
 
     public void DefaultValues()
     {
+        //Reset all settings to orginal values
         PlayerPrefs.SetFloat("DefaultSliderPos", 0.5f);
         PlayerPrefs.SetFloat("BrakePressureSliderPos", 0.5f);
         PlayerPrefs.SetFloat("BrakeBiasSliderPos", 0.5f);
@@ -202,7 +202,6 @@ public class Setup : MonoBehaviour
         PlayerPrefs.SetFloat("SpringRearSliderPos", suspensionStiffnessSliderRear.value);
         PlayerPrefs.SetFloat("DamperFrontSliderPos", damperStiffnessSliderFront.value);
         PlayerPrefs.SetFloat("DamperRearSliderPos", damperStiffnessSliderRear.value);
-
     }
 
     public void goToTrack()
@@ -217,20 +216,22 @@ public class Setup : MonoBehaviour
 
     public void increaseBrakePressure()
     {
-        if(brakePressureSlider.value != brakePressureSlider.maxValue) 
+        //Increase braking force of player vehicle
+        if(brakePressureSlider.value != brakePressureSlider.maxValue)//Cap how much of an adjustment can be made to value
         {
             brakePower = brakePower + brakePressureAdjust;
-            PlayerPrefs.SetFloat("BrakePower", brakePower);
+            PlayerPrefs.SetFloat("BrakePower", brakePower);//Update related value stored in PlayerPrefs to carry values over between scenes and play sessions
             brakePressureSlider.value += 0.1f;              
         }
     }
 
     public void decreaseBrakePressure()
     {
+        //Decrease braking force of player vehicle
         if (brakePressureSlider.value != brakePressureSlider.minValue)
         {
             brakePower = brakePower - brakePressureAdjust;
-            PlayerPrefs.SetFloat("BrakePower", brakePower);
+            PlayerPrefs.SetFloat("BrakePower", brakePower);//Update related value stored in PlayerPrefs to carry values over between scenes and play sessions
             brakePressureSlider.value -= 0.1f;            
         }
     }
@@ -241,7 +242,7 @@ public class Setup : MonoBehaviour
         {
             brakeBiasLevel = brakeBiasLevel + 1;
             player.GetComponent<SimCarController>().brakeBiasLevel += 1;
-            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
+            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);//Update related value stored in PlayerPrefs to carry values over between scenes and play sessions
             brakeBiasSlider.value += 0.1f;
             player.GetComponent<SimCarController>().SetBrakeBias();            
         }
@@ -253,7 +254,7 @@ public class Setup : MonoBehaviour
         {
             brakeBiasLevel = brakeBiasLevel - 1;
             player.GetComponent<SimCarController>().brakeBiasLevel -= 1;
-            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);
+            PlayerPrefs.SetInt("BrakeBias", brakeBiasLevel);//Update related value stored in PlayerPrefs to carry values over between scenes and play sessions
             brakeBiasSlider.value -= 0.1f;
             player.GetComponent<SimCarController>().SetBrakeBias();            
        }
@@ -263,7 +264,7 @@ public class Setup : MonoBehaviour
     {
         if (finalDriveSlider.value != finalDriveSlider.maxValue)
         {
-            maxSpeed = maxSpeed + 5;
+            maxSpeed = maxSpeed + 5;//Increase player vehicle top speed by 5mph
             PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
             finalDriveSlider.value += 0.1f;            
         }
@@ -273,12 +274,13 @@ public class Setup : MonoBehaviour
     {
         if (finalDriveSlider.value != finalDriveSlider.minValue)
         {
-            maxSpeed = maxSpeed - 5;
+            maxSpeed = maxSpeed - 5;//Decrease player vehicle top speed by 5mph
             PlayerPrefs.SetFloat("TopSpeed", maxSpeed);
             finalDriveSlider.value -= 0.1f;            
         }
     }
 
+    //All suspension options (ride height, suspension stiffness and damper stiffness) can be set differently from front and rear axles
     public void increaseRideHeightFront()
     {
         if (rideHeightSliderFront.value != rideHeightSliderFront.maxValue)
@@ -288,7 +290,7 @@ public class Setup : MonoBehaviour
             rideHeightF += 0.025f;
             PlayerPrefs.SetFloat("RideHeightFront", rideHeightF);
 
-            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance += 0.025f;
+            player.GetComponent<SimCarController>().colliders.FRWheel.suspensionDistance += 0.025f;//Changes present player vehicle in scene, demonstrating a visual change of adjusting the setup values
             player.GetComponent<SimCarController>().colliders.FLWheel.suspensionDistance += 0.025f;             
         }
     }
@@ -498,6 +500,7 @@ public class Setup : MonoBehaviour
 
     public void SetUpMenuOpen()
     {
+        //Multiple setup menus for different components navigated through by placing them in an array and incrementing through
         currentSetupMenu = 0;        
         setupButton.SetActive(false);
         driveButton.SetActive(false);
@@ -517,10 +520,10 @@ public class Setup : MonoBehaviour
 
     public void NextSetup()
     {
-        if (currentSetupMenu != setupMenus.Length - 1)
+        if (currentSetupMenu != setupMenus.Length - 1)//Ensures player can not go outside bounds of array
         {
             setupMenus[currentSetupMenu].SetActive(false);
-            currentSetupMenu++;
+            currentSetupMenu++;//Increment to go to next setup menu found in setupMenus array
             setupMenus[currentSetupMenu].SetActive(true);
         }
     }

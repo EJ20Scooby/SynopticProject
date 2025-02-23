@@ -6,7 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
     private TrackManager trackCheckpoints;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//Check player vehicle has passed through a checkpoint 
     {
         if (other.TryGetComponent<SimCarController>(out SimCarController player))
         {

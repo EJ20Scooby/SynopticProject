@@ -43,6 +43,7 @@ public class SimCarController : MonoBehaviour
 
     private void Start()
     {
+        //Initialize all values for the player vehicle settings when level loads
         brakePower = PlayerPrefs.GetFloat("BrakePower");
         brakeBiasLevel = PlayerPrefs.GetInt("BrakeBias");
         maxSpeed = PlayerPrefs.GetFloat("TopSpeed");
@@ -72,17 +73,15 @@ public class SimCarController : MonoBehaviour
         colliders.RLWheel.suspensionSpring = RL;
         colliders.RRWheel.suspensionSpring = RR;
 
-        carRB = GetComponent<Rigidbody>();
-        //maxSpeed = maxSpeed * mphConversion;
+        carRB = GetComponent<Rigidbody>();        
         SetBrakeBias();
     }
 
     void Update()
-    {
-        //speed = ((colliders.RRWheel.rotationSpeed + colliders.RLWheel.rotationSpeed + colliders.FRWheel.rotationSpeed + colliders.FLWheel.rotationSpeed) / 4) * colliders.RRWheel.radius * Mathf.PI / 30;
+    {        
         speed = carRB.velocity.magnitude * mphConversion;//Convert to MPH        
         speedClamped = Mathf.Lerp(speedClamped, speed, Time.deltaTime);
-        steerSpeed = carRB.velocity.magnitude; 
+        steerSpeed = carRB.velocity.magnitude;//Affect speed of turning wheels when traveling faster for smoother inputs 
         CheckInput();
         ApplyMotor();
         ApplySteering();
@@ -93,6 +92,7 @@ public class SimCarController : MonoBehaviour
 
     void CheckInput() 
     {
+        //Detect what input is being used
         throttleInput = Input.GetAxis("Vertical");
         if (Mathf.Abs(throttleInput) > 0 && isEngineRunning ==0)
         {
@@ -122,16 +122,18 @@ public class SimCarController : MonoBehaviour
 
     void ApplyMotor()
     {
+        //Apply motor power to driven wheels to allow player vehicle to move
         if (isEngineRunning > 1)
         {
             if (speed < maxSpeed)
             {
-                //RWD
+                //Only affects rear wheel colliders making player vehicle function like a rear wheel drive vehicle (RWD)
                 colliders.RRWheel.motorTorque = motorPower * throttleInput;
                 colliders.RLWheel.motorTorque = motorPower * throttleInput;
             }
             if (speed > maxSpeed)
             {
+                // Keeps player vehicle from accelerating past a certain velocity
                 colliders.RRWheel.motorTorque = 0;
                 colliders.RLWheel.motorTorque = 0;
             }
@@ -140,6 +142,7 @@ public class SimCarController : MonoBehaviour
 
     public IEnumerator StartEngine()
     {
+        //Initial input turns vehicles engine on
         isEngineRunning = 1;
         yield return new WaitForSeconds(0.6f);
         EngineRunning = true;
@@ -149,6 +152,7 @@ public class SimCarController : MonoBehaviour
 
     public void SetBrakeBias()
     {
+        //Determine the brake bias of player vehicle, allowing for either forward middle or rear favoured braking bias
         if(brakeBiasLevel == 0)
         {
             brakeFront = 0.0f;
@@ -208,7 +212,7 @@ public class SimCarController : MonoBehaviour
 
     void ApplyBrake()
     {
-        //Braking is front biased 70% - 30% division
+        //Apply braking force to the wheel colliders
         colliders.FRWheel.brakeTorque = brakeInput * brakePower * brakeFront;
         colliders.FLWheel.brakeTorque = brakeInput * brakePower * brakeFront;
 
@@ -218,6 +222,7 @@ public class SimCarController : MonoBehaviour
 
     void ApplyHandBrake()
     {
+        //Apply a secondary braking force only to rear colliders to work as a handbrake
         if(handBrakeInput == true)
         {
             colliders.RRWheel.brakeTorque = handBrakePower * 1.0f;
@@ -251,6 +256,7 @@ public class SimCarController : MonoBehaviour
 
     void UpdateWheels()
     {
+        //Animate wheel models to motion of wheel colliders
         UpdateWheel(colliders.FRWheel, meshes.FRWheel);
         UpdateWheel(colliders.FLWheel, meshes.FLWheel);
         UpdateWheel(colliders.RRWheel, meshes.RRWheel);
