@@ -1,0 +1,20 @@
+Manchester Metropolitian BSc (Hons.) Computer Games Development
+Unit- Synoptic Project
+
+This project was created as my final year project for Computer Games Development course.
+My project idea was to explore ways to make a setup menus featured in sim and simcade racing games could be more accesible and influential in how they teach player setting up
+vehicles for esports/ league racing. My approach targeted simcade style racing games as the genre provides an more accesible handling physics with easier controling cars
+whilst still mainting the influence of being based on real world vehicle dynamics that provide depth to changing vehicle settings to provide an impactful experience.
+
+My approach to providing greater detail in the setup menus is by when the player hovers over a certain change a pop up box appears with detail of what the change will do 
+and then below listing the pros and cons that can arise from the highlighted change. Player can alter the cars settings and then return to the test track to see whether 
+the change provides an improvement in their laptimes.
+
+Controls-
+Accelerate - 'W'
+Brake - 'S'
+Hand Brake - 'Space Bar'
+Steer Left - 'A'
+Steer Right - 'D'
+
+Pause - 'ESC'
