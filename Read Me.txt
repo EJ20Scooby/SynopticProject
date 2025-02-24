@@ -18,3 +18,7 @@ Steer Left - 'A'
 Steer Right - 'D'
 
 Pause - 'ESC'
+
+Credits:
+Unity AssetStore- EasyRoads3D Free v3 - AndaSoft
+Unity AssetStore- Rally Cars Models Free - Ash Dev
